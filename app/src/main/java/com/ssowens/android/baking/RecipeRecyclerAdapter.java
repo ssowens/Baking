@@ -16,6 +16,7 @@ import java.util.List;
 
 public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAdapter.MyViewHolder> {
 
+    private static final String TAG = RecipeRecyclerAdapter.class.getSimpleName();
     List<Recipe> recipeList;
 
     public RecipeRecyclerAdapter(List<Recipe> list) {
