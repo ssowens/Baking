@@ -39,6 +39,9 @@ public class Recipe {
         this.name = name;
     }
 
+    //     List<RestaurantMenuItem> menu;
+    //RestaurantMenuItem[] menu; // alternative, either one is fine
+    // Ingredient[] getIngredients  // These are the same
     public List<Ingredient> getIngredients() {
         return ingredients;
     }

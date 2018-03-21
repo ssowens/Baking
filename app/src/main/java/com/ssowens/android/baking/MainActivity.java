@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String RECIPE_URL = "https://d17h27t6h515a5.cloudfront.net";
 
     RecyclerView recyclerView;
-    List<Recipe> recipes = new ArrayList<>();
+    List<Recipe> recipeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +45,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
                 try {
-                    List<Recipe> recipeList = response.body();
-                    recipes = new ArrayList<>();
-                    Log.e("onResponse", "Recipe List size = " + response);
-
-                    for (Recipe recipe : recipeList) {
-                        Recipe eachRecipe = new Recipe();
-                        eachRecipe.setName(recipe.getName());
-                        eachRecipe.setId(recipe.getId());
-                        recipes.add(eachRecipe);
-                    }
+                    recipeList = response.body();
+                    Log.e(TAG,"onResponse" + "Recipe List size = " + response.body().size());
+                    Log.e(TAG,"onResponse"+ "Response Body " + response.body());
                 } catch (Exception e) {
-                    Log.d("onResponse", "There is an error");
+                    Log.d(TAG,"onResponse" + "There is an error");
                     e.printStackTrace();
                 }
-                RecipeRecyclerAdapter recyclerAdapter = new RecipeRecyclerAdapter(recipes);
+                RecipeRecyclerAdapter recyclerAdapter = new RecipeRecyclerAdapter(recipeList);
                 recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 1));
                 recyclerView.setAdapter(recyclerAdapter);
             }
 
             @Override
             public void onFailure(Call<List<Recipe>> call, Throwable t) {
-                Log.d("onFailure", t.toString());
+                Log.d(TAG,"onFailure" + t.toString());
             }
 
         });
