@@ -89,7 +89,7 @@ public class RecipeCardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Log.i(TAG, "Sheila *onCreateView()");
+        Log.i(TAG, "onCreateView()");
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
         recyclerView = rootView.findViewById(R.id.recycle_view);
 

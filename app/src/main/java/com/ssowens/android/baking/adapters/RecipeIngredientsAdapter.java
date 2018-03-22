@@ -31,7 +31,6 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         Log.i(TAG, "Sheila onCreateViewHolder");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         CardViewItemBinding cardViewItemBinding = CardViewItemBinding.inflate(layoutInflater,

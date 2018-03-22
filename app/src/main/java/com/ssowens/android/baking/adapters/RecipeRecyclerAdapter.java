@@ -1,5 +1,6 @@
 package com.ssowens.android.baking.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ssowens.android.baking.activities.RecipeIngredientsActivity;
 import com.ssowens.android.baking.databinding.CardViewItemBinding;
 import com.ssowens.android.baking.models.Recipe;
 
@@ -32,7 +34,7 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        Log.i(TAG, "Sheila onCreateViewHolder");
+        Log.i(TAG, "onCreateViewHolder");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         CardViewItemBinding cardViewItemBinding = CardViewItemBinding.inflate(layoutInflater,
                 parent, false);
@@ -41,14 +43,14 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
 
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Log.i(TAG, "Sheila onBindViewHolder");
+        Log.i(TAG, "onBindViewHolder");
         Recipe recipe = recipeList.get(position);
         holder.bind(recipe);
     }
 
     @Override
     public int getItemCount() {
-        Log.i(TAG, "Sheila getItemCount " + recipeList.size());
+        Log.i(TAG, "getItemCount " + recipeList.size());
         return recipeList.size();
     }
 
@@ -63,6 +65,9 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName(), Toast.LENGTH_LONG).show();
+//                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
+//                    intent.putExtra("id", binding.getRecipe().getId());
+//                    v.getContext().startActivity(intent);
                 }
             });
         }
