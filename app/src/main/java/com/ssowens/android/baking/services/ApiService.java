@@ -1,4 +1,4 @@
-package com.ssowens.android.baking;
+package com.ssowens.android.baking.services;
 
 import com.ssowens.android.baking.models.Recipe;
 

@@ -1,4 +1,4 @@
-package com.ssowens.android.baking;
+package com.ssowens.android.baking.activities;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import com.ssowens.android.baking.R;
 
 /**
  * Created by Sheila Owens on 3/21/18.
@@ -47,4 +49,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
+
+
 }
+

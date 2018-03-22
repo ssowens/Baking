@@ -1,4 +1,4 @@
-package com.ssowens.android.baking;
+package com.ssowens.android.baking.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.ssowens.android.baking.databinding.CardViewItemBinding;
 import com.ssowens.android.baking.models.Recipe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,10 +22,10 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
         .MyViewHolder> {
 
     private static final String TAG = RecipeRecyclerAdapter.class.getSimpleName();
-    List<Recipe> recipeList;
+    List<Recipe> recipeList = new ArrayList<>();
 
-    RecipeRecyclerAdapter(List<Recipe> list) {
-        this.recipeList = list;
+    public void setRecipeList(List<Recipe> recipeList) {
+        this.recipeList = recipeList;
     }
 
     @NonNull
@@ -51,18 +52,17 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
         return recipeList.size();
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final CardViewItemBinding binding;
 
-        public MyViewHolder(CardViewItemBinding binding) {
+        public MyViewHolder(final CardViewItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked", Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName(), Toast.LENGTH_LONG).show();
                 }
             });
         }
