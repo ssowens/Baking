@@ -64,10 +64,11 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName(), Toast.LENGTH_LONG).show();
-//                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
-//                    intent.putExtra("id", binding.getRecipe().getId());
-//                    v.getContext().startActivity(intent);
+                    Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName()
+                            + " " + binding.getRecipe().getId(), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
+                    intent.putExtra("id", binding.getRecipe().getId());
+                    v.getContext().startActivity(intent);
                 }
             });
         }

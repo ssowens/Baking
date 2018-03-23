@@ -31,7 +31,7 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.i(TAG, "Sheila onCreateViewHolder");
+        Log.i(TAG, "onCreateViewHolder");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         CardViewItemBinding cardViewItemBinding = CardViewItemBinding.inflate(layoutInflater,
                 parent, false);
@@ -40,14 +40,14 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
 
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Log.i(TAG, "Sheila onBindViewHolder");
+        Log.i(TAG, "onBindViewHolder");
         Recipe recipe = recipeList.get(position);
         holder.bind(recipe);
     }
 
     @Override
     public int getItemCount() {
-        Log.i(TAG, "Sheila getItemCount " + recipeList.size());
+        Log.i(TAG, "getItemCount " + recipeList.size());
         return recipeList.size();
     }
 
@@ -61,7 +61,12 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "Cl*i*cked " +
+                                  binding.getRecipe().getName() + " " + binding.getRecipe().getId(),
+                            Toast.LENGTH_LONG).show();
+//                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
+//                    intent.putExtra("id", binding.getRecipe().getId());
+//                    v.getContext().startActivity(intent);
                 }
             });
         }

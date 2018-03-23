@@ -7,6 +7,11 @@ import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.fragments.RecipeIngredientsFragment;
+import com.ssowens.android.baking.models.Ingredient;
+import com.ssowens.android.baking.models.Recipe;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sowens on 3/22/18.
@@ -15,20 +20,26 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity {
 
     private static final String TAG = RecipeIngredientsActivity.class.getSimpleName();
     private int recipeId;
+    private List<Ingredient> ingredientList = new ArrayList<>();
+    Recipe recipe;
 
     public RecipeIngredientsActivity() {
-    }
-
-    public RecipeIngredientsActivity(int recipeId) {
-        Log.i(TAG, "Recipe id = " + recipeId);
-        this.recipeId = recipeId;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe_steps);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            int recipeId = extras.getInt("id");
+//            ingredientList.add(ingredientList.get(recipeId).getQuantity(),
+//                    ingredientList.get(recipeId).getMeasure(),
+//                    ingredientList.get(recipeId).getIngredient();
+        }
+
+        Log.i(TAG, "This is the recipeid " + recipeId);
     }
 
     @Override
