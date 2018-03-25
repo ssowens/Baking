@@ -4,17 +4,19 @@ package com.ssowens.android.baking.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ssowens.android.baking.services.ApiService;
 import com.ssowens.android.baking.R;
-import com.ssowens.android.baking.adapters.RecipeRecyclerAdapter;
+import com.ssowens.android.baking.RecipeCollection;
+import com.ssowens.android.baking.adapters.RecipeCardsAdapter;
 import com.ssowens.android.baking.models.Recipe;
+import com.ssowens.android.baking.services.ApiService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,7 @@ public class RecipeCardsFragment extends Fragment {
     private static final String RECIPE_URL = "https://d17h27t6h515a5.cloudfront.net";
 
     List<Recipe> recipeList = new ArrayList<>();
-    RecipeRecyclerAdapter recyclerAdapter;
+    RecipeCardsAdapter recyclerAdapter;
     RecyclerView recyclerView;
 
     public RecipeCardsFragment() {
@@ -60,15 +62,16 @@ public class RecipeCardsFragment extends Fragment {
 
         ApiService service = retrofit.create(ApiService.class);
         Call<List<Recipe>> call = service.getRecipeDetails();
-        recyclerAdapter = new RecipeRecyclerAdapter();
+        recyclerAdapter = new RecipeCardsAdapter();
         call.enqueue(new Callback<List<Recipe>>() {
             @Override
             public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
                 try {
                     recipeList = response.body();
+                    // TODO -- Testing
+                    RecipeCollection.get(getActivity()).addListRecipeCollection(recipeList);
                     Log.e(TAG, "onResponse  " + "Recipe List size = " + response.body().size());
                     //   Log.e(TAG,"onResponse"+ "Response Body " + response.body());
-                    Log.i(TAG, "Sheila *** recipeList " + recipeList.size());
                     recyclerAdapter.setRecipeList(recipeList);
                     recyclerAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
@@ -93,10 +96,16 @@ public class RecipeCardsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
         recyclerView = rootView.findViewById(R.id.recycle_view);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerAdapter);
 
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

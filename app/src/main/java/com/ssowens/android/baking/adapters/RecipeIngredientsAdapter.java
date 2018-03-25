@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ssowens.android.baking.databinding.CardViewItemBinding;
-import com.ssowens.android.baking.models.Recipe;
+import com.ssowens.android.baking.databinding.RecipeIngredientItemBinding;
+import com.ssowens.android.baking.models.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,47 +22,50 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
         .MyViewHolder> {
 
     private static final String TAG = RecipeIngredientsAdapter.class.getSimpleName();
-    List<Recipe> recipeList = new ArrayList<>();
+    private List<Ingredient> ingredientsList = new ArrayList<>();
 
-    public void setRecipeList(List<Recipe> recipeList) {
-        this.recipeList = recipeList;
+    public void setIngredientList(List<Ingredient> ingredientsList) {
+        this.ingredientsList = ingredientsList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.i(TAG, "onCreateViewHolder");
+        View rowView;
+
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        CardViewItemBinding cardViewItemBinding = CardViewItemBinding.inflate(layoutInflater,
+        RecipeIngredientItemBinding recipeIngredientItemBinding = RecipeIngredientItemBinding.inflate(layoutInflater,
                 parent, false);
-        return new MyViewHolder(cardViewItemBinding);
+        return new MyViewHolder(recipeIngredientItemBinding);
     }
 
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder");
-        Recipe recipe = recipeList.get(position);
-        holder.bind(recipe);
+        Ingredient ingredient = ingredientsList.get(position);
+        holder.bind(ingredient);
     }
 
     @Override
     public int getItemCount() {
-        Log.i(TAG, "getItemCount " + recipeList.size());
-        return recipeList.size();
+        Log.i(TAG, "getItemCount " + ingredientsList.size());
+        return ingredientsList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private final CardViewItemBinding binding;
+        private final RecipeIngredientItemBinding binding;
 
-        public MyViewHolder(final CardViewItemBinding binding) {
+        public MyViewHolder(final RecipeIngredientItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Cl*i*cked " +
-                                  binding.getRecipe().getName() + " " + binding.getRecipe().getId(),
+                                  binding.getModel().getIngredient() + " " + binding.getModel()
+                                    .getIngredient(),
                             Toast.LENGTH_LONG).show();
 //                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
 //                    intent.putExtra("id", binding.getRecipe().getId());
@@ -71,9 +74,11 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
             });
         }
 
-        public void bind(Recipe recipe) {
-            binding.setRecipe(recipe);
+        public void bind(Ingredient ingredient) {
+            binding.setModel(ingredient);
             binding.executePendingBindings();
         }
     }
+
+
 }

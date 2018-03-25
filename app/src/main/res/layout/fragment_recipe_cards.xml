@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/title"
-        android:text="Ing*redients"
+        android:text="Ingredients"
         android:paddingBottom="10dp"/>
 
     <LinearLayout

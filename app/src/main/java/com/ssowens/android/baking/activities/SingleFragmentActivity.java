@@ -17,8 +17,6 @@ import com.ssowens.android.baking.R;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
-    private static final String TAG = SingleFragmentActivity.class.getSimpleName();
-
     protected abstract Fragment createFragment();
 
     @Override

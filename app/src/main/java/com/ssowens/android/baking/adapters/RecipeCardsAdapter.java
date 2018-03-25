@@ -3,7 +3,6 @@ package com.ssowens.android.baking.adapters;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +15,16 @@ import com.ssowens.android.baking.models.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_ID;
+
 /**
  * Created by Sheila Owens on 3/18/18.
  */
 
-public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAdapter
+public class RecipeCardsAdapter extends RecyclerView.Adapter<RecipeCardsAdapter
         .MyViewHolder> {
 
-    private static final String TAG = RecipeRecyclerAdapter.class.getSimpleName();
+    private static final String TAG = RecipeCardsAdapter.class.getSimpleName();
     List<Recipe> recipeList = new ArrayList<>();
 
     public void setRecipeList(List<Recipe> recipeList) {
@@ -34,7 +35,6 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        Log.i(TAG, "onCreateViewHolder");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         CardViewItemBinding cardViewItemBinding = CardViewItemBinding.inflate(layoutInflater,
                 parent, false);
@@ -43,14 +43,12 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
 
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Log.i(TAG, "onBindViewHolder");
         Recipe recipe = recipeList.get(position);
         holder.bind(recipe);
     }
 
     @Override
     public int getItemCount() {
-        Log.i(TAG, "getItemCount " + recipeList.size());
         return recipeList.size();
     }
 
@@ -67,7 +65,7 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecipeRecyclerAd
                     Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName()
                             + " " + binding.getRecipe().getId(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
-                    intent.putExtra("id", binding.getRecipe().getId());
+                    intent.putExtra(EXTRA_RECIPE_ID, binding.getRecipe().getId());
                     v.getContext().startActivity(intent);
                 }
             });
