@@ -4,7 +4,7 @@ package com.ssowens.android.baking.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.RecipeCollection;
 import com.ssowens.android.baking.adapters.RecipeIngredientsAdapter;
+import com.ssowens.android.baking.adapters.RecipeStepsAdapter;
 import com.ssowens.android.baking.models.Ingredient;
 import com.ssowens.android.baking.models.Recipe;
+import com.ssowens.android.baking.models.Step;
 
 import java.util.List;
 
@@ -30,7 +32,9 @@ public class RecipeIngredientsFragment extends Fragment {
     private static final String TAG = RecipeIngredientsFragment.class.getSimpleName();
 
     RecyclerView recyclerView;
+    RecyclerView recyclerViewStep;
     RecipeIngredientsAdapter recipeIngredientsAdapter;
+    RecipeStepsAdapter recipeStepsAdapter;
     int recipeId;
     Recipe recipe;
 
@@ -64,9 +68,14 @@ public class RecipeIngredientsFragment extends Fragment {
         Log.i(TAG, "onCreateView()");
 
         View view = inflater.inflate(R.layout.fragment_recipe_ingredients, container, false);
-        recyclerView = view.findViewById(R.id.ingredient_recycle_view);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        //ReclyclerView for Ingredients
+        recyclerView = view.findViewById(R.id.ingredient_recycle_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // Recyclerview for Steps
+        recyclerViewStep = view.findViewById(R.id.steps_recycle_view);
+        recyclerViewStep.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
         return view;
@@ -82,6 +91,11 @@ public class RecipeIngredientsFragment extends Fragment {
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);
 
+        List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
+        recipeStepsAdapter = new RecipeStepsAdapter();
+        recipeStepsAdapter.setStepList(steps);
+        recipeStepsAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(recipeStepsAdapter);
     }
 
     @Override

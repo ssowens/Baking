@@ -4,7 +4,7 @@ package com.ssowens.android.baking.models;
  * Created by Sheila Owens on 3/18/18.
  */
 
-class Step {
+public class Step {
 
     private int id;
 

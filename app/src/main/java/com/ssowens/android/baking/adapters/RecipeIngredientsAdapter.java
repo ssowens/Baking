@@ -32,7 +32,6 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.i(TAG, "onCreateViewHolder");
-        View rowView;
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         RecipeIngredientItemBinding recipeIngredientItemBinding = RecipeIngredientItemBinding.inflate(layoutInflater,
@@ -63,13 +62,13 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Cl*i*cked " +
+                    Toast.makeText(v.getContext(), "Clicked " +
                                   binding.getModel().getIngredient() + " " + binding.getModel()
                                     .getIngredient(),
                             Toast.LENGTH_LONG).show();
-//                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
-//                    intent.putExtra("id", binding.getRecipe().getId());
-//                    v.getContext().startActivity(intent);
+             //       Intent intent = new Intent(v.getContext(), RecipeStepsActivity.class);
+             //       intent.putExtra("id", binding.getModel().getId());
+             //       v.getContext().startActivity(intent);
                 }
             });
         }
@@ -81,4 +80,16 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
     }
 
 
+    private  class VIEW_TYPE {
+        public static final int Header1 = 1;
+        public static final int Ingredient = 2;
+        public static final int Header2 = 3;
+        public static final int Step = 4;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return super.getItemViewType(position);
+    }
 }

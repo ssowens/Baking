@@ -8,9 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.RecipeCollection;
@@ -54,6 +57,7 @@ public class RecipeCardsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(RECIPE_URL)
@@ -106,6 +110,17 @@ public class RecipeCardsFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_favorite:
+                Toast.makeText(getContext(), getString(R.string.favorite_selected), Toast.LENGTH_LONG).show();
+        }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_recipe_cards_menu, menu);
+    }
+
 }

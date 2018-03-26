@@ -1,12 +1,44 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.ssowens.android.baking.fragments.RecipeIngredientsFragment">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ingredient_recycle_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="Recipe Ingredients"
+            android:textSize="20sp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ingredient_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:background="@color/lightBlue"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:text="Recipe Steps"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/steps_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
