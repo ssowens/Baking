@@ -39,4 +39,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.android.support:design:27.1.0'
+    compile 'com.hannesdorfmann:adapterdelegates3:3.0.1'
 }

@@ -1,58 +1,63 @@
 package com.ssowens.android.baking.adapters;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 import com.ssowens.android.baking.databinding.ItemRecipeStepsBinding;
+import com.ssowens.android.baking.models.DisplayableItem;
 import com.ssowens.android.baking.models.Step;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Sheila Owens on 3/25/18.
+ * Created by Sheila Owens on 3/26/18.
  */
 
-public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsAdapter.MyViewHolder> {
+public class StepsAdapterDelegate extends AdapterDelegate<List<DisplayableItem>> {
 
-    private static final String TAG = RecipeStepsAdapter.class.getSimpleName();
     private List<Step> stepsList = new ArrayList<>();
+    LayoutInflater inflater;
+    private List<DisplayableItem> items;
+    private int position;
+    private MyViewHolder holder;
+    private List<Object> payloads;
 
-    public void setStepList(List<Step> stepsList) {
-        this.stepsList = stepsList;
+    public StepsAdapterDelegate(Activity activity) {
+        inflater = activity.getLayoutInflater();
+    }
+
+    public boolean isForViewType(@NonNull List<DisplayableItem> items, int position) {
+        return items.get(position) instanceof Step;
     }
 
     @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.i(TAG, "onCreateViewHolder");
-
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ItemRecipeStepsBinding recipeStepsItemBinding = ItemRecipeStepsBinding.inflate
-                (layoutInflater,
-                        parent, false);
-        return new RecipeStepsAdapter.MyViewHolder(recipeStepsItemBinding);
+        ItemRecipeStepsBinding itemRecipeStepsBinding = ItemRecipeStepsBinding.inflate
+                (layoutInflater, parent, false);
+        return new MyViewHolder(itemRecipeStepsBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Step step = stepsList.get(position);
-        holder.bind(step);
-    }
+    protected void onBindViewHolder(@NonNull List<DisplayableItem> items, int position,
+                                    @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
 
-
-    @Override
-    public int getItemCount() {
-        return stepsList.size();
+        this.items = items;
+        this.position = position;
+        this.holder = (MyViewHolder) holder;
+        this.payloads = payloads;
+        Step step = (Step) items.get(position);
+        ((MyViewHolder) holder).bind(step);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
         private final ItemRecipeStepsBinding binding;
 
         public MyViewHolder(final ItemRecipeStepsBinding binding) {
@@ -77,4 +82,5 @@ public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsAdapter.
             binding.executePendingBindings();
         }
     }
+
 }

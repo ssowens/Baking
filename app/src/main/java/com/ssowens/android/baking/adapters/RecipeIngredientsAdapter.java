@@ -79,17 +79,8 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
         }
     }
 
-
-    private  class VIEW_TYPE {
-        public static final int Header1 = 1;
-        public static final int Ingredient = 2;
-        public static final int Header2 = 3;
-        public static final int Step = 4;
-    }
-
     @Override
     public int getItemViewType(int position) {
-
         return super.getItemViewType(position);
     }
 }
