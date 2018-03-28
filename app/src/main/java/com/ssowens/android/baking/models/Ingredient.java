@@ -4,7 +4,7 @@ package com.ssowens.android.baking.models;
  * Created by Sheila Owens on 3/18/18.
  */
 
-public class Ingredient {
+public class Ingredient implements DisplayableItem {
 
     private int id;
 
@@ -41,4 +41,6 @@ public class Ingredient {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
+
+
 }

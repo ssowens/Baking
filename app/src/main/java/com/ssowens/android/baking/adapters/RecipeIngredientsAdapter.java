@@ -21,10 +21,16 @@ import java.util.List;
 public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredientsAdapter
         .MyViewHolder> {
 
+    private List<Object> items;
+
     private static final String TAG = RecipeIngredientsAdapter.class.getSimpleName();
     private List<Ingredient> ingredientsList = new ArrayList<>();
 
     public void setIngredientList(List<Ingredient> ingredientsList) {
+        this.ingredientsList = ingredientsList;
+    }
+
+    public RecipeIngredientsAdapter(List<Ingredient> ingredientsList) {
         this.ingredientsList = ingredientsList;
     }
 
@@ -42,7 +48,7 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder");
-        Ingredient ingredient = ingredientsList.get(position);
+        Object ingredient = ingredientsList.get(position);
         holder.bind(ingredient);
     }
 
@@ -63,24 +69,31 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Clicked " +
-                                  binding.getModel().getIngredient() + " " + binding.getModel()
+                                    binding.getModel().getIngredient() + " " + binding.getModel()
                                     .getIngredient(),
                             Toast.LENGTH_LONG).show();
-             //       Intent intent = new Intent(v.getContext(), RecipeStepsActivity.class);
-             //       intent.putExtra("id", binding.getModel().getId());
-             //       v.getContext().startActivity(intent);
+                    //       Intent intent = new Intent(v.getContext(), RecipeStepsActivity.class);
+                    //       intent.putExtra("id", binding.getModel().getId());
+                    //       v.getContext().startActivity(intent);
                 }
             });
         }
 
-        public void bind(Ingredient ingredient) {
-            binding.setModel(ingredient);
+        public void bind(Object ingredient) {
+            binding.setModel((Ingredient) ingredient);
             binding.executePendingBindings();
         }
     }
 
     @Override
     public int getItemViewType(int position) {
+        if (ingredientsList.get(position) instanceof Ingredient)
+            return VIEW_TYPES.Ingredient;
         return super.getItemViewType(position);
+    }
+
+    private class VIEW_TYPES {
+        public static final int Ingredient = 1;
+        public static final int Step = 2;
     }
 }

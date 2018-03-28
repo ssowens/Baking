@@ -73,18 +73,26 @@ public class RecipeIngredientsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.ingredient_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        // Recyclerview for Steps
-        recyclerViewStep = view.findViewById(R.id.steps_recycle_view);
-        recyclerViewStep.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        // Recyclerview for Steps
+//        recyclerViewStep = view.findViewById(R.id.steps_recycle_view);
+//        recyclerViewStep.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
+        //updateDelegateAdapter();
         return view;
+    }
+
+    private void updateDelegateAdapter() {
+//        List<DisplayableItem> ingredients = RecipeCollection.get(getActivity()).getRecipe(recipeId)
+//                .getIngredients();
+//        MainAdapter adapter = new MainAdapter(getActivity(), ingredients);
+//        recyclerView.setAdapter(adapter);
     }
 
     private void updateUI() {
 
         List<Ingredient> ingredients = RecipeCollection.get(getActivity()).getRecipe(recipeId)
-                 .getIngredients();
+                .getIngredients();
 
         recipeIngredientsAdapter = new RecipeIngredientsAdapter();
         recipeIngredientsAdapter.setIngredientList(ingredients);

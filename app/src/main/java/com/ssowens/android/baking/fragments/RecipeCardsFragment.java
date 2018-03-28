@@ -100,7 +100,6 @@ public class RecipeCardsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
         recyclerView = rootView.findViewById(R.id.recycle_view);
 
-        //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerAdapter);
 

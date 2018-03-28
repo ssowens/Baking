@@ -4,7 +4,7 @@ package com.ssowens.android.baking.models;
  * Created by Sheila Owens on 3/18/18.
  */
 
-public class Step {
+public class Step implements DisplayableItem {
 
     private int id;
 
@@ -15,6 +15,8 @@ public class Step {
     private String videoURL;
 
     private String thumbnailURL;
+
+    private String type;
 
     public int getId() {
         return id;
@@ -54,5 +56,13 @@ public class Step {
 
     public void setThumbnailURL(String thumbnailURL) {
         this.thumbnailURL = thumbnailURL;
+    }
+
+    public String getType() {
+        return "s";
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
