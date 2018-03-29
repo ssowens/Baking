@@ -22,6 +22,8 @@
         <activity
             android:name=".activities.RecipeIngredientsActivity"
             android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".activities.MediaActivity">
+        </activity>
     </application>
 
 </manifest>

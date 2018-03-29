@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.RecipeCollection;
 import com.ssowens.android.baking.adapters.RecipeIngredientsAdapter;
@@ -33,7 +32,6 @@ public class RecipeIngredientsFragment extends Fragment {
     RecyclerView recyclerView;
     RecipeIngredientsAdapter recipeIngredientsAdapter;
     int recipeId;
-   // Recipe recipe;
 
     public RecipeIngredientsFragment() {
         // Required empty public constructor
@@ -62,8 +60,6 @@ public class RecipeIngredientsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.i(TAG, "onCreateView()");
-
         View view = inflater.inflate(R.layout.fragment_recipe_ingredients, container, false);
 
         //ReclyclerView for Ingredients and Steps
@@ -85,7 +81,6 @@ public class RecipeIngredientsFragment extends Fragment {
         recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);
-
 
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
         objects.addAll(steps);

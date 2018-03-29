@@ -1,5 +1,6 @@
 package com.ssowens.android.baking.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,13 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ssowens.android.baking.activities.MediaActivity;
+import com.ssowens.android.baking.databinding.ItemRecipeIngredientBinding;
 import com.ssowens.android.baking.databinding.ItemRecipeStepsBinding;
-import com.ssowens.android.baking.databinding.RecipeIngredientItemBinding;
 import com.ssowens.android.baking.models.Ingredient;
 import com.ssowens.android.baking.models.Step;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ssowens.android.baking.activities.MediaActivity.EXTRA_VIDEO_URL;
 
 /**
  * Created by Sheila Owens on 3/18/18.
@@ -45,7 +49,7 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
         if (viewType == INGREDIENTS) {
-            RecipeIngredientItemBinding recipeIngredientItemBinding = RecipeIngredientItemBinding
+            ItemRecipeIngredientBinding recipeIngredientItemBinding = ItemRecipeIngredientBinding
                     .inflate(layoutInflater,
                             parent, false);
             return new MyViewHolder(recipeIngredientItemBinding);
@@ -78,10 +82,10 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private RecipeIngredientItemBinding binding1;
+        private ItemRecipeIngredientBinding binding1;
         private ItemRecipeStepsBinding binding2;
 
-        public MyViewHolder(final RecipeIngredientItemBinding binding) {
+        public MyViewHolder(final ItemRecipeIngredientBinding binding) {
             super(binding.getRoot());
             this.binding1 = binding;
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -105,12 +109,14 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Clicked " +
-                                    binding.getModel().getDescription() + " " + binding.getModel()
-                                    .getShortDescription(),
+                                    binding.getModel().getVideoURL(),
                             Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(v.getContext(), MediaActivity.class);
+                    intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
                 }
             });
         }
+
 
         public void bindIngredient(Object ingredient) {
             binding1.setModel((Ingredient) ingredient);

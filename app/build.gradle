@@ -40,4 +40,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.android.support:design:27.1.0'
     compile 'com.hannesdorfmann:adapterdelegates3:3.0.1'
+    compile 'com.google.android.exoplayer:exoplayer:r2.2.0'
 }
