@@ -8,7 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
         android:orientation="vertical">
 
         <TextView
@@ -16,14 +15,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingBottom="8dp"
-            android:text="Recipe Ingredients"
+            android:textStyle="bold"
+            android:background="@color/colorPrimary"
+            android:text="@string/recipe_ingredients_title"
             android:textSize="20sp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/ingredient_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:background="@color/lightBlue"/>
 
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
-            android:text="Recipe Steps"/>
+            android:text="@string/recipe_steps"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/steps_recycle_view"

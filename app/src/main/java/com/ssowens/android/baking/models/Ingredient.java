@@ -4,7 +4,7 @@ package com.ssowens.android.baking.models;
  * Created by Sheila Owens on 3/18/18.
  */
 
-public class Ingredient implements DisplayableItem {
+public class Ingredient {
 
     private int id;
 

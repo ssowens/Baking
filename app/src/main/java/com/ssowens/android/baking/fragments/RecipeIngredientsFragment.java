@@ -14,11 +14,10 @@ import android.view.ViewGroup;
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.RecipeCollection;
 import com.ssowens.android.baking.adapters.RecipeIngredientsAdapter;
-import com.ssowens.android.baking.adapters.RecipeStepsAdapter;
 import com.ssowens.android.baking.models.Ingredient;
-import com.ssowens.android.baking.models.Recipe;
 import com.ssowens.android.baking.models.Step;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_ID;
@@ -32,11 +31,9 @@ public class RecipeIngredientsFragment extends Fragment {
     private static final String TAG = RecipeIngredientsFragment.class.getSimpleName();
 
     RecyclerView recyclerView;
-    RecyclerView recyclerViewStep;
     RecipeIngredientsAdapter recipeIngredientsAdapter;
-    RecipeStepsAdapter recipeStepsAdapter;
     int recipeId;
-    Recipe recipe;
+   // Recipe recipe;
 
     public RecipeIngredientsFragment() {
         // Required empty public constructor
@@ -69,41 +66,33 @@ public class RecipeIngredientsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_recipe_ingredients, container, false);
 
-        //ReclyclerView for Ingredients
+        //ReclyclerView for Ingredients and Steps
         recyclerView = view.findViewById(R.id.ingredient_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-//        // Recyclerview for Steps
-//        recyclerViewStep = view.findViewById(R.id.steps_recycle_view);
-//        recyclerViewStep.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         updateUI();
-        //updateDelegateAdapter();
         return view;
-    }
-
-    private void updateDelegateAdapter() {
-//        List<DisplayableItem> ingredients = RecipeCollection.get(getActivity()).getRecipe(recipeId)
-//                .getIngredients();
-//        MainAdapter adapter = new MainAdapter(getActivity(), ingredients);
-//        recyclerView.setAdapter(adapter);
     }
 
     private void updateUI() {
 
         List<Ingredient> ingredients = RecipeCollection.get(getActivity()).getRecipe(recipeId)
                 .getIngredients();
+        List<Object> objects = new ArrayList<>();
+        objects.addAll(ingredients);
 
-        recipeIngredientsAdapter = new RecipeIngredientsAdapter();
-        recipeIngredientsAdapter.setIngredientList(ingredients);
+        recipeIngredientsAdapter = new RecipeIngredientsAdapter(objects);
+        recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);
 
+
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
-        recipeStepsAdapter = new RecipeStepsAdapter();
-        recipeStepsAdapter.setStepList(steps);
-        recipeStepsAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(recipeStepsAdapter);
+        objects.addAll(steps);
+        recipeIngredientsAdapter = new RecipeIngredientsAdapter(objects);
+        recipeIngredientsAdapter.setIngredientList(objects);
+        recipeIngredientsAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(recipeIngredientsAdapter);
     }
 
     @Override

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="3dp"
-            android:background="@color/lightBlue"
+            app:cardBackgroundColor="@color/lightBlue"
             app:cardCornerRadius="3dp">
 
             <LinearLayout
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="5dp"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="18sp"
                     android:text="@{String.valueOf(model.quantity)}"
                     tools:text="2"/>
 
@@ -45,7 +45,7 @@
                     android:paddingRight="10dp"
                     android:text="@{model.measure}"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="18sp"
                     tools:text="CUP"/>
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{model.ingredient}"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="18sp"
                     tools:text="Graham Cracker crumbs"/>
 
             </LinearLayout>
