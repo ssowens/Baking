@@ -8,16 +8,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/title"
-        android:text="Ing*redients"
+        android:text="Ingredients"
         android:paddingBottom="10dp"/>
 
     <LinearLayout
         android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
         android:orientation="horizontal">
-
-
 
         <TextView
             android:id="@+id/quantity"

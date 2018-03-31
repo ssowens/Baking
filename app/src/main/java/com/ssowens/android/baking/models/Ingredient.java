@@ -6,12 +6,17 @@ package com.ssowens.android.baking.models;
 
 public class Ingredient {
 
+    private int id;
+
     private double quantity;
 
     private String measure;
 
     private String ingredient;
 
+    public int getId() {
+        return id;
+    }
 
     public String getMeasure() {
         return measure;
@@ -36,4 +41,6 @@ public class Ingredient {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
+
+
 }
