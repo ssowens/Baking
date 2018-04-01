@@ -9,33 +9,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ssowens.android.baking.activities.MediaActivity;
+import com.ssowens.android.baking.activities.RecipeMediaActivity;
 import com.ssowens.android.baking.databinding.ItemRecipeIngredientBinding;
 import com.ssowens.android.baking.databinding.ItemRecipeStepsBinding;
 import com.ssowens.android.baking.models.Ingredient;
 import com.ssowens.android.baking.models.Step;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.ssowens.android.baking.activities.MediaActivity.EXTRA_VIDEO_URL;
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
  * Created by Sheila Owens on 3/18/18.
  */
 
-public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredientsAdapter
+public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIngredientsStepsAdapter
         .MyViewHolder> {
 
-    private List<Object> items = new ArrayList<>();
+    private List<Object> items;
 
-    private static final String TAG = RecipeIngredientsAdapter.class.getSimpleName();
+    private static final String TAG = RecipeIngredientsStepsAdapter.class.getSimpleName();
 
     public void setIngredientList(List<Object> ingredientsList) {
         this.items = ingredientsList;
     }
 
-    public RecipeIngredientsAdapter(List<Object> ingredientsList) {
+    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList) {
         this.items = ingredientsList;
     }
 
@@ -102,7 +101,7 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
             });
         }
 
-        public MyViewHolder(final ItemRecipeStepsBinding binding) {
+        private MyViewHolder(final ItemRecipeStepsBinding binding) {
             super(binding.getRoot());
             this.binding2 = binding;
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -111,19 +110,19 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
                     Toast.makeText(v.getContext(), "Clicked " +
                                     binding.getModel().getVideoURL(),
                             Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(v.getContext(), MediaActivity.class);
+                    Intent intent = new Intent(v.getContext(), RecipeMediaActivity.class);
                     intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
+                    v.getContext().startActivity(intent);
                 }
             });
         }
 
-
-        public void bindIngredient(Object ingredient) {
+        private void bindIngredient(Object ingredient) {
             binding1.setModel((Ingredient) ingredient);
             binding1.executePendingBindings();
         }
 
-        public void bindStep(Object step) {
+        private void bindStep(Object step) {
             binding2.setModel((Step) step);
             binding2.executePendingBindings();
         }
@@ -133,10 +132,8 @@ public class RecipeIngredientsAdapter extends RecyclerView.Adapter<RecipeIngredi
     @Override
     public int getItemViewType(int position) {
         if (items.get(position) instanceof Ingredient) {
-            Log.i(TAG, "Sheila instance of Ingredients");
             return INGREDIENTS;
         } else if (items.get(position) instanceof Step) {
-            Log.i(TAG, "Sheila instance of Ingredients");
             return STEPS;
         } else
             return super.getItemViewType(position);
