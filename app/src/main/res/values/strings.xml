@@ -7,5 +7,6 @@
     <string name="favorite_selected">Favorite Button Future Implementation</string>
     <string name="recipe_ingredients_title">Recipe Ingredients</string>
     <string name="recipe_steps">Recipe Steps</string>
-    <string name="next_recipe">Next recipe</string>
+    <string name="next_step">Next step</string>
+    <string name="no_video_avail">No video available for \u0020</string>
 </resources>

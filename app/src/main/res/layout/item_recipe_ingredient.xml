@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="5dp"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/recipe_text_size"
                     android:text="@{String.valueOf(model.quantity)}"
                     tools:text="2"/>
 
@@ -46,7 +46,7 @@
                     android:paddingRight="10dp"
                     android:text="@{model.measure}"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/recipe_text_size"
                     tools:text="CUP"/>
 
                 <TextView
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{model.ingredient}"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/recipe_text_size"
                     tools:text="Graham Cracker crumbs"/>
 
             </LinearLayout>

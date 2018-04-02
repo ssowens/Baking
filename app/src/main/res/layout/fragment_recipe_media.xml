@@ -4,23 +4,29 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:layout_weight="1"
               android:background="#88000000"
               android:keepScreenOn="true"
-              android:layout_weight="3"
               android:orientation="vertical">
 
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/playerView"
-        android:layout_weight="1.4"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_weight=".45">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
 
 
     <TextView
         android:id="@+id/recipe_step_instruction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.4"
+        android:layout_weight=".45"
         tools:text="This is the recipe step instruction"/>
 
     <Button
@@ -28,11 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_weight=".2"
-        android:contentDescription="@string/next_recipe"
-        android:drawableRight="@drawable/ic_next"
+        android:layout_weight=".10"
+        android:contentDescription="@string/next_step"
         android:drawableEnd="@drawable/ic_next"
-        android:text="@string/next_recipe"/>
+        android:drawableRight="@drawable/ic_next"
+        android:text="@string/next_step"/>
 
 
 </LinearLayout>

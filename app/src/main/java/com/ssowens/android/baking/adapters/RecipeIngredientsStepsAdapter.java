@@ -3,12 +3,14 @@ package com.ssowens.android.baking.adapters;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.activities.RecipeMediaActivity;
 import com.ssowens.android.baking.databinding.ItemRecipeIngredientBinding;
 import com.ssowens.android.baking.databinding.ItemRecipeStepsBinding;
@@ -17,6 +19,7 @@ import com.ssowens.android.baking.models.Step;
 
 import java.util.List;
 
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
@@ -81,6 +84,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+
         private ItemRecipeIngredientBinding binding1;
         private ItemRecipeStepsBinding binding2;
 
@@ -94,9 +98,6 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                                     binding.getModel().getIngredient() + " " + binding.getModel()
                                     .getIngredient(),
                             Toast.LENGTH_LONG).show();
-                    //       Intent intent = new Intent(v.getContext(), RecipeStepsActivity.class);
-                    //       intent.putExtra("id", binding.getModel().getId());
-                    //       v.getContext().startActivity(intent);
                 }
             });
         }
@@ -110,9 +111,17 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                     Toast.makeText(v.getContext(), "Clicked " +
                                     binding.getModel().getVideoURL(),
                             Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(v.getContext(), RecipeMediaActivity.class);
-                    intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
-                    v.getContext().startActivity(intent);
+                    if (TextUtils.isEmpty(binding.getModel().getVideoURL())) {
+                        Toast.makeText(v.getContext(), v.getContext().getString(R.string
+                                .no_video_avail) +
+                                        binding.getModel().getShortDescription(),
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Intent intent = new Intent(v.getContext(), RecipeMediaActivity.class);
+                        intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
+                        intent.putExtra(EXTRA_ID, binding.getModel().getId());
+                        v.getContext().startActivity(intent);
+                    }
                 }
             });
         }

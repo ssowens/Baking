@@ -72,10 +72,8 @@ public class RecipeCardsFragment extends Fragment {
             public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
                 try {
                     recipeList = response.body();
-                    // TODO -- Testing
                     RecipeCollection.get(getActivity()).addListRecipeCollection(recipeList);
                     Log.e(TAG, "onResponse  " + "Recipe List size = " + response.body().size());
-                    //   Log.e(TAG,"onResponse"+ "Response Body " + response.body());
                     recyclerAdapter.setRecipeList(recipeList);
                     recyclerAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
@@ -103,7 +101,6 @@ public class RecipeCardsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerAdapter);
 
-        // Inflate the layout for this fragment
         return rootView;
     }
 

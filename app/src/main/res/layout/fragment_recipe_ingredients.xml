@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
         android:orientation="vertical">
 
         <TextView
@@ -18,27 +19,27 @@
             android:textStyle="bold"
             android:background="@color/colorPrimary"
             android:text="@string/recipe_ingredients_title"
-            android:textSize="20sp"/>
+            android:textSize="@dimen/recipe_text_size"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/ingredient_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@color/lightBlue"/>
+            android:background="@color/lightBlue"
+            android:paddingBottom="8dp"/>
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:paddingLeft="8dp"
             android:text="@string/recipe_steps"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/steps_recycle_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
