@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,18 +110,76 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         view = inflater.inflate(R.layout.fragment_recipe_media, container, false);
         playerView = view.findViewById(R.id.playerView);
 
+        final ViewPager viewPager = view.findViewById(R.id.media_view_pager);
+
+        recipes = RecipeCollection.get(getActivity()).getRecipes();
+        final List<Step> steps = recipes.get(recipeId).getSteps();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+        viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+            @Override
+            public Fragment getItem(int position) {
+                Step step = steps.get(position);
+                return StepsFragment.newInstance(step.getDescription());
+            }
+
+            @Override
+            public int getCount() {
+                return steps.size();
+            }
+        });
+        if (stepId < steps.size()) {
+            viewPager.setCurrentItem(stepId);
+        }
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.e("Sheila", "This is the place to handle ExoPlayer change URL "
+                        + position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+//
+//        for (int i = 0; i < steps.size(); i++) {
+//            if (recipes.get(recipeId).getSteps().equals(stepId)) {
+//                viewPager.setCurrentItem(i);
+//                break;
+//            }
+//        }
+
+
+
+
         // Initialize the player.
         initializePlayer();
 
-        TextView tvStepInstruction = view.findViewById(R.id.recipe_step_instruction);
-        String description = recipes.get(recipeId).getSteps().get(stepId).getDescription();
-        tvStepInstruction.setText(recipes.get(recipeId).getSteps().get(stepId).getDescription());
+//        TextView tvStepInstruction = view.findViewById(R.id.recipe_step_instruction);
+//        String description = recipes.get(recipeId).getSteps().get(stepId).getDescription();
+//        tvStepInstruction.setText(recipes.get(recipeId).getSteps().get(stepId).getDescription());
         Button nextRecipe = view.findViewById(R.id.btn_next);
         nextRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Clicked Next ~ " + stepId,
-                        Toast.LENGTH_SHORT).show();
+
+                int current = viewPager.getCurrentItem();
+                if (current < steps.size() -1) {
+                    viewPager.setCurrentItem(current + 1);
+                    Toast.makeText(v.getContext(), "Clicked Next ~ " + current,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(v.getContext(), "Reached limit ~ " + current,
+                            Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

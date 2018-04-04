@@ -21,17 +21,17 @@
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/playerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight=".50"/>
+            android:layout_height="wrap_content" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/media_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight=".40">
+            android:layout_height="0dp"
+            android:layout_weight="1">
         </android.support.v4.view.ViewPager>
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/recipe_step_instruction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_weight=".10"
             android:contentDescription="@string/next_step"
             android:drawableEnd="@drawable/ic_next"
             android:drawableRight="@drawable/ic_next"

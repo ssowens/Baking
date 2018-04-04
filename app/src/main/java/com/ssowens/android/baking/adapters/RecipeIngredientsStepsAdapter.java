@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
@@ -46,6 +47,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
 
     private static final int INGREDIENTS = 1;
     private static final int STEPS = 2;
+    private static final int HEADER = 3;
 
     @NonNull
     @Override
@@ -58,10 +60,13 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                     .inflate(layoutInflater,
                             parent, false);
             return new MyViewHolder(recipeIngredientItemBinding);
-        } else {
+        } else  if (viewType == STEPS) {
             ItemRecipeStepsBinding itemRecipeStepsBinding = ItemRecipeStepsBinding.inflate
                     (layoutInflater, parent, false);
             return new MyViewHolder(itemRecipeStepsBinding);
+        } else {
+            TextView header = new TextView(parent.getContext());
+            return new MyViewHolder(header);
         }
     }
 
@@ -69,13 +74,13 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder");
         final int itemType = getItemViewType(position);
-
+        Object data = items.get(position);
         if (itemType == INGREDIENTS) {
-            Object ingredient = items.get(position);
-            holder.bindIngredient(ingredient);
+            holder.bindIngredient(data);
+        } else if (itemType == STEPS) {
+            holder.bindStep(data);
         } else {
-            Object step = items.get(position);
-            holder.bindStep(step);
+            holder.header.setText((String)data);
         }
     }
 
@@ -90,7 +95,13 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
 
         private ItemRecipeIngredientBinding binding1;
         private ItemRecipeStepsBinding binding2;
+        private TextView header;
 
+
+        public MyViewHolder(TextView textView) {
+            super(textView);
+            this.header = textView;
+        }
         public MyViewHolder(final ItemRecipeIngredientBinding binding) {
             super(binding.getRoot());
             this.binding1 = binding;
@@ -148,7 +159,8 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         } else if (items.get(position) instanceof Step) {
             return STEPS;
         } else
-            return super.getItemViewType(position);
+            return HEADER;
     }
+
 
 }

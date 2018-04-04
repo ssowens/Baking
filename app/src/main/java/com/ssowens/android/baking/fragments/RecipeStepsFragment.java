@@ -45,7 +45,7 @@ public class RecipeStepsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recipe_ingredients, container, false);
-        recyclerView = view.findViewById(R.id.steps_recycle_view);
+        recyclerView = view.findViewById(R.id.ingredient_recycle_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         updateUI();
         return view;
