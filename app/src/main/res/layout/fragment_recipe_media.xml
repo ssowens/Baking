@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/root"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_weight="1"
-              android:background="#88000000"
-              android:keepScreenOn="true"
-              android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <data>
+
+        <variable
+            name="model"
+            type="com.ssowens.android.baking.models.Step"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".45">
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:keepScreenOn="true"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/playerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_weight=".50"/>
 
-    </FrameLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/media_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".40">
+        </android.support.v4.view.ViewPager>
 
+        <TextView
+            android:id="@+id/recipe_step_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:text="This is  a test"
+            android:paddingBottom="40dp"
+            tools:text="This is the recipe step instruction"/>
 
-    <TextView
-        android:id="@+id/recipe_step_instruction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".45"
-        tools:text="This is the recipe step instruction"/>
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight=".10"
+            android:contentDescription="@string/next_step"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawableRight="@drawable/ic_next"
+            android:paddingBottom="16dp"
+            android:text="@string/next_step"/>
 
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_weight=".10"
-        android:contentDescription="@string/next_step"
-        android:drawableEnd="@drawable/ic_next"
-        android:drawableRight="@drawable/ic_next"
-        android:text="@string/next_step"/>
-
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

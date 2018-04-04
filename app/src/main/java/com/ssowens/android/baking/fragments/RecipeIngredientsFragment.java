@@ -79,14 +79,14 @@ public class RecipeIngredientsFragment extends Fragment {
         List<Object> objects = new ArrayList<>();
         objects.addAll(ingredients);
 
-        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects);
+        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId);
         recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);
 
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
         objects.addAll(steps);
-        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects);
+        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId);
         recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);

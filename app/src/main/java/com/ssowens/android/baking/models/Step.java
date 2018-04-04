@@ -20,7 +20,7 @@ public class Step {
         return id;
     }
 
-    public void setId(int id) {
+    public void setStepId(int id) {
         this.id = id;
     }
 

@@ -20,6 +20,7 @@ import com.ssowens.android.baking.models.Step;
 import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
@@ -30,6 +31,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         .MyViewHolder> {
 
     private List<Object> items;
+    private int recipeId;
 
     private static final String TAG = RecipeIngredientsStepsAdapter.class.getSimpleName();
 
@@ -37,8 +39,9 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         this.items = ingredientsList;
     }
 
-    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList) {
+    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList, int recipeId) {
         this.items = ingredientsList;
+        this.recipeId = recipeId;
     }
 
     private static final int INGREDIENTS = 1;
@@ -108,8 +111,8 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked " +
-                                    binding.getModel().getVideoURL(),
+                    Toast.makeText(v.getContext(), "Clicked recipeID " + recipeId +
+                                    " step id " + binding.getModel().getId(),
                             Toast.LENGTH_LONG).show();
                     if (TextUtils.isEmpty(binding.getModel().getVideoURL())) {
                         Toast.makeText(v.getContext(), v.getContext().getString(R.string
@@ -120,6 +123,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                         Intent intent = new Intent(v.getContext(), RecipeMediaActivity.class);
                         intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
                         intent.putExtra(EXTRA_ID, binding.getModel().getId());
+                        intent.putExtra(EXTRA_RECIPE_ID, recipeId);
                         v.getContext().startActivity(intent);
                     }
                 }
@@ -135,7 +139,6 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
             binding2.setModel((Step) step);
             binding2.executePendingBindings();
         }
-
     }
 
     @Override
@@ -147,6 +150,5 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         } else
             return super.getItemViewType(position);
     }
-
 
 }

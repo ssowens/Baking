@@ -6,22 +6,23 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c89b5f98-6b49-4b2d-adaf-6b50a7331015" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaPagerActivity.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Step.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Step.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,46 +41,38 @@
       <state>
         <projects_view>
           <tree_state>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Baking" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-            </PATH>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Baking" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.61151737">
+    <splitter split-orientation="horizontal" split-proportion="0.4899329">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="RecipeMediaFragment.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java">
+          <file leaf-file-name="RecipeCardsFragment.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="6">
-                  <caret line="61" column="38" lean-forward="false" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
-                  <folding>
-                    <element signature="e#4258#4501#0" expanded="true" />
-                    <element signature="e#4500#4501#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="1245">
+                  <caret line="110" column="45" lean-forward="false" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="82" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RecipeCardsFragment.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java">
+          <file leaf-file-name="RecipeMediaFragment.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="464">
-                  <caret line="110" column="45" lean-forward="false" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="82" />
-                  <folding>
-                    <element signature="e#3799#3836#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="-205">
+                  <caret line="68" column="38" lean-forward="false" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -87,50 +80,34 @@
           <file leaf-file-name="RecipeMediaActivity.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+                <state relative-caret-position="345">
+                  <caret line="28" column="44" lean-forward="false" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
                   <folding>
-                    <element signature="e#572#573#0" expanded="true" />
-                    <element signature="e#622#623#0" expanded="true" />
+                    <element signature="e#633#634#0" expanded="true" />
+                    <element signature="e#683#684#0" expanded="true" />
                   </folding>
                 </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="fragment_recipe_media.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="320">
-                  <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer2">
-                <state />
               </provider>
             </entry>
           </file>
           <file leaf-file-name="RecipeIngredientsStepsAdapter.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="699">
-                  <caret line="119" column="76" lean-forward="true" selection-start-line="119" selection-start-column="76" selection-end-line="119" selection-end-column="76" />
-                  <folding>
-                    <element signature="e#3201#3604#0" expanded="true" />
-                    <element signature="e#3603#3604#0" expanded="true" />
-                    <element signature="e#3802#4862#0" expanded="true" />
-                    <element signature="e#4226#4308#0" expanded="true" />
-                    <element signature="e#4861#4862#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="317">
+                  <caret line="122" column="78" lean-forward="false" selection-start-line="122" selection-start-column="78" selection-end-line="122" selection-end-column="78" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <file leaf-file-name="fragment_recipe_cards_menu.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/fragment_recipe_cards_menu.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="63" lean-forward="false" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+                <state relative-caret-position="45">
+                  <caret line="3" column="9" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -138,22 +115,22 @@
           </file>
           <file leaf-file-name="item_recipe_steps.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_steps.xml">
-              <provider editor-type-id="text-editor">
-                <state relative-caret-position="525">
-                  <caret line="35" column="42" lean-forward="false" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="413">
+                  <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
                   <folding />
                 </state>
-              </provider>
-              <provider selected="true" editor-type-id="android-designer2">
-                <state />
               </provider>
             </entry>
           </file>
           <file leaf-file-name="RecipeIngredientsFragment.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+                <state relative-caret-position="473">
+                  <caret line="88" column="63" lean-forward="false" selection-start-line="88" selection-start-column="63" selection-end-line="88" selection-end-column="63" />
                   <folding />
                 </state>
               </provider>
@@ -162,7 +139,7 @@
           <file leaf-file-name="RecipeCollection.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/RecipeCollection.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
+                <state relative-caret-position="180">
                   <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="38" />
                   <folding />
                 </state>
@@ -172,8 +149,24 @@
           <file leaf-file-name="Step.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Step.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="398">
-                  <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+                <state relative-caret-position="120">
+                  <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+                  <folding>
+                    <element signature="e#292#293#0" expanded="true" />
+                    <element signature="e#317#318#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="fragment_recipe_cards.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_cards.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="525">
+                  <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -185,35 +178,68 @@
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="item_recipe_ingredient.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="37" column="61" lean-forward="false" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-                  <folding>
-                    <element signature="e#1844#1869#0" expanded="true" />
-                    <element signature="e#2238#2263#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
               <provider editor-type-id="android-designer2">
                 <state />
               </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RecipeMediaActivity.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="26" column="45" lean-forward="false" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+                <state relative-caret-position="86">
+                  <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RecipeIngredientsFragment.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java">
+          <file leaf-file-name="RecipeMediaPagerActivity.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaPagerActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="377">
-                  <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+                <state relative-caret-position="546">
+                  <caret line="79" column="22" lean-forward="false" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#2753#2754#0" expanded="true" />
+                    <element signature="e#2804#2805#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="fragment_recipe_media.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="763">
+                  <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+                  <folding>
+                    <element signature="e#1857#1876#0" expanded="true" />
+                    <element signature="e#2049#2068#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="item_recipe_steps.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_steps.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="465">
+                  <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="236">
+                  <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -221,63 +247,25 @@
           </file>
           <file leaf-file-name="fragment_recipe_ingredients.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
-                  <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+                <state relative-caret-position="236">
+                  <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RecipeIngredientsFragment.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="138">
+                  <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
                   <folding>
-                    <element signature="e#756#790#0" expanded="true" />
-                    <element signature="e#820#845#0" expanded="true" />
-                    <element signature="e#1436#1458#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer2">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="fragment_recipe_cards.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_cards.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer2">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="card_view_item.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_view_item.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="54" />
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer2">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RecipeIngredientsStepsAdapter.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="313">
-                  <caret line="119" column="74" lean-forward="false" selection-start-line="119" selection-start-column="74" selection-end-line="119" selection-end-column="74" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -291,16 +279,14 @@
       <list>
         <option value="resourceFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onCli</find>
-      <find>S</find>
       <find>setAd</find>
       <find>toast</find>
       <find>isForViewType</find>
@@ -325,6 +311,12 @@
       <find>toolbar</find>
       <find>Sheila</find>
       <find>string</find>
+      <find>init</find>
+      <find>itemre</find>
+      <find>stepId</find>
+      <find>stepid</find>
+      <find>id</find>
+      <find>newIntent</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2410,16 +2402,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/SingleFragmentActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/IngredientCollection.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/RecipeCollection.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_view_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_favorite.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/fragment_recipe_cards_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_cards.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeIngredientsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeStepsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeStepsFragment.java" />
@@ -2435,12 +2421,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapterdelegates/StepsAdapterDelegate.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Recipe.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Ingredient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Step.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recipe_steps.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recipe_ingredient_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapterdelegates/IngredientsAdapterDelegate.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_media.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsAdapter.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -2448,23 +2431,32 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/MediaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_media.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeCardsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/gradle.properties" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Step.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/fragment_recipe_cards_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_cards.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recipe_steps.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_view_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaPagerActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1383" />
@@ -2486,6 +2478,70 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -2542,85 +2598,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="baking" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="Baking" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2628,14 +2605,14 @@
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="HT6AB0202614" />
+    <property name="device.picker.selection" value="Nexus_6P_API_26" />
     <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
     <property name="DEBUGGABLE_PROCESS" value="com.ssowens.android.baking" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="string&#9;FILE&#9;file:///Users/ssalston/Documents/GitHub/Baking/app/src/main/res/values/strings.xml&#10;strings&#9;FILE&#9;file:///Users/ssalston/Documents/GitHub/Baking/app/src/main/res/values/strings.xml" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1522649365066" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1522818964104" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2991,16 +2968,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
+    <frame x="1" y="23" width="1383" height="877" extended-state="0" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26952696" sideWeight="0.502442" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30698287" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30698287" sideWeight="0.47353363" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30698287" sideWeight="0.52646637" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29512516" sideWeight="0.49570817" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24908425" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5052083" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23542354" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3008,15 +2984,15 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36385837" sideWeight="0.49479166" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36316183" sideWeight="0.49479166" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22661397" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23320158" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21745351" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21700224" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.49479166" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21212122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.49479166" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21212122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960477" sideWeight="0.49479166" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3034,12 +3010,12 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26952696" sideWeight="0.502442" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30698287" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30698287" sideWeight="0.47353363" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30698287" sideWeight="0.52646637" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29512516" sideWeight="0.49570817" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24908425" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5052083" order="3" side_tool="true" content_ui="tabs" />
@@ -3050,16 +3026,16 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36385837" sideWeight="0.49479166" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36316183" sideWeight="0.49479166" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22661397" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23320158" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21745351" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21700224" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.49479166" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21212122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.49479166" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21212122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960477" sideWeight="0.49479166" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -3088,7 +3064,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java</url>
-          <line>52</line>
+          <line>55</line>
           <properties />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
@@ -3101,39 +3077,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hannesdorfmann/adapterdelegates3/3.0.1/41071c0e5f529eace84b8067f8d0a2e2d2e372f/adapterdelegates3-3.0.1-sources.jar!/com/hannesdorfmann/adapterdelegates3/AdapterDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="43" column="29" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hannesdorfmann/adapterdelegates3/3.0.1/41071c0e5f529eace84b8067f8d0a2e2d2e372f/adapterdelegates3-3.0.1-sources.jar!/com/hannesdorfmann/adapterdelegates3/AdapterDelegatesManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="220" column="26" lean-forward="false" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/ssowens/android/baking/databinding/RecipeStepsItemBinding.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_ingredients.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-27/android/support/v7/widget/RecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="6518" column="30" lean-forward="false" selection-start-line="6518" selection-start-column="30" selection-end-line="6518" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/recyclerview-v7/27.1.0/877b5b7b69188d19a2705de30ca29121457f5154/recyclerview-v7-27.1.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -3152,16 +3095,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/MainAdapter.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapterdelegates/StepsAdapterDelegate.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/DisplayableItem.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeStepsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -3173,14 +3106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Ingredient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3219,14 +3144,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/SingleFragmentActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3260,38 +3177,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/ssowens/android/baking/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="4017" column="28" lean-forward="false" selection-start-line="4017" selection-start-column="28" selection-end-line="4017" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/ssowens/android/baking/R.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/exoplayer-core/2.7.2/4321b258686ee80f4a66579fb6cd13c2e4632e8/exoplayer-core-2.7.2-sources.jar!/com/google/android/exoplayer2/util/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="889" column="23" lean-forward="false" selection-start-line="889" selection-start-column="23" selection-end-line="889" selection-end-column="23" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/exoplayer-ui/2.7.2/f7eb7b7e6c46a851ffae1c956d66aa97db0526fd/exoplayer-ui-2.7.2-sources.jar!/com/google/android/exoplayer2/ui/AspectRatioFrameLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="57" column="26" lean-forward="false" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3301,53 +3198,6 @@
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_cards.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="37" column="61" lean-forward="false" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-          <folding>
-            <element signature="e#1844#1869#0" expanded="true" />
-            <element signature="e#2238#2263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="42" lean-forward="false" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_view_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeCardsAdapter.java">
@@ -3374,49 +3224,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/RecipeCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/SingleFragmentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-151">
+        <state relative-caret-position="29">
           <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/android/databinding/DataBinderMapperImpl.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="110" column="45" lean-forward="false" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Step.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/RecipeCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        <state relative-caret-position="120">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
           <folding>
-            <element signature="e#756#790#0" expanded="true" />
-            <element signature="e#820#845#0" expanded="true" />
-            <element signature="e#1436#1458#0" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_steps.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_steps.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_ingredients.xml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="42" lean-forward="false" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+        <state relative-caret-position="60">
+          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -3424,36 +3306,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/fragment_recipe_cards_menu.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        <state relative-caret-position="45">
+          <caret line="3" column="9" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeCardsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="110" column="45" lean-forward="false" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="82" />
-          <folding>
-            <element signature="e#3799#3836#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="63" lean-forward="false" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="33" />
+        <state relative-caret-position="236">
+          <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -3461,38 +3328,150 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredients.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="119" column="76" lean-forward="true" selection-start-line="119" selection-start-column="76" selection-end-line="119" selection-end-column="76" />
+        <state relative-caret-position="236">
+          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_cards.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_ingredient.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_view_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="37" column="14" lean-forward="false" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeIngredientsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
           <folding>
-            <element signature="e#3201#3604#0" expanded="true" />
-            <element signature="e#3603#3604#0" expanded="true" />
-            <element signature="e#3802#4862#0" expanded="true" />
-            <element signature="e#4226#4308#0" expanded="true" />
-            <element signature="e#4861#4862#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/models/Ingredient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_media.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="763">
+          <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+          <folding>
+            <element signature="e#1857#1876#0" expanded="true" />
+            <element signature="e#2049#2068#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recipe_steps.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+        <state relative-caret-position="345">
+          <caret line="28" column="44" lean-forward="false" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
           <folding>
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/adapters/RecipeIngredientsStepsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="122" column="78" lean-forward="false" selection-start-line="122" selection-start-column="78" selection-end-line="122" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/fragments/RecipeMediaFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
-          <caret line="61" column="38" lean-forward="false" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+        <state relative-caret-position="-205">
+          <caret line="68" column="38" lean-forward="false" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssowens/android/baking/activities/RecipeMediaPagerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="79" column="22" lean-forward="false" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
           <folding>
-            <element signature="e#4258#4501#0" expanded="true" />
-            <element signature="e#4500#4501#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2753#2754#0" expanded="true" />
+            <element signature="e#2804#2805#0" expanded="true" />
           </folding>
         </state>
       </provider>

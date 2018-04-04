@@ -29,9 +29,14 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.ssowens.android.baking.R;
+import com.ssowens.android.baking.RecipeCollection;
+import com.ssowens.android.baking.models.Recipe;
 import com.ssowens.android.baking.models.Step;
 
+import java.util.List;
+
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
@@ -41,7 +46,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
     private static final String TAG = RecipeMediaFragment.class.getSimpleName();
 
-    String videoUrl;
+    private String videoUrl;
     private SimpleExoPlayer exoPlayer;
     public View view;
     private PlayerView playerView;
@@ -49,7 +54,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private boolean shouldAutoPlay;
     private DataSource.Factory dataSourceFactory;
     private int stepId;
+    private int recipeId;
     private Step step;
+    private List<Recipe> recipes;
 
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
             ".net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4";
@@ -59,11 +66,12 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         // Required empty public constructor
     }
 
-    public static RecipeMediaFragment newInstance(String url, int stepId) {
+    public static RecipeMediaFragment newInstance(String url, int stepId, int recipeId) {
         Bundle args = new Bundle();
         Log.i(TAG, "Sheila This is the URL => " + url);
         args.putString(EXTRA_VIDEO_URL, url);
         args.putInt(EXTRA_ID, stepId);
+        args.putInt(EXTRA_RECIPE_ID, recipeId);
         RecipeMediaFragment fragment = new RecipeMediaFragment();
         fragment.setArguments(args);
         return fragment;
@@ -76,7 +84,10 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         if (args != null) {
             videoUrl = args.getString(EXTRA_VIDEO_URL, URL);
             stepId = args.getInt(EXTRA_ID);
+            recipeId = args.getInt(EXTRA_RECIPE_ID);
         }
+
+        recipes = RecipeCollection.get(getActivity()).getRecipes();
 
         shouldAutoPlay = true;
 
@@ -100,7 +111,8 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         initializePlayer();
 
         TextView tvStepInstruction = view.findViewById(R.id.recipe_step_instruction);
-        tvStepInstruction.setText("This is a test");
+        String description = recipes.get(recipeId).getSteps().get(stepId).getDescription();
+        tvStepInstruction.setText(recipes.get(recipeId).getSteps().get(stepId).getDescription());
         Button nextRecipe = view.findViewById(R.id.btn_next);
         nextRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,5 +174,17 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     @Override
     public void onVisibilityChange(int visibility) {
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        exoPlayer.stop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        exoPlayer.prepare(videoSource);
     }
 }
