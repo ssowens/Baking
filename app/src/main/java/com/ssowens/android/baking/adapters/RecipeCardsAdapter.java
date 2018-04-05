@@ -25,7 +25,7 @@ public class RecipeCardsAdapter extends RecyclerView.Adapter<RecipeCardsAdapter
         .MyViewHolder> {
 
     private static final String TAG = RecipeCardsAdapter.class.getSimpleName();
-    List<Recipe> recipeList = new ArrayList<>();
+    private List<Recipe> recipeList = new ArrayList<>();
 
     public void setRecipeList(List<Recipe> recipeList) {
         this.recipeList = recipeList;

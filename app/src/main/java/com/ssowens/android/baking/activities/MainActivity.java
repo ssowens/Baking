@@ -17,8 +17,6 @@ public class MainActivity extends SingleFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate()");
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
