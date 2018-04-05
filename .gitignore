@@ -23,14 +23,19 @@ Thumbs.db
 
 # Android Studio
 *.iml
-.idea
-#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.idea/
+
+
+# Gradle files
 .gradle
 build/
 .navigation
-captures/
+/captures
 output.json 
+
+*.hprof
 
 #NDK
 obj/
 .externalNativeBuild
+.idea/misc.xml
