@@ -13,7 +13,6 @@ import com.ssowens.android.baking.fragments.RecipeStepsFragment;
 
 public class RecipeStepsActivity extends SingleFragmentActivity {
 
-    private static final String TAG = RecipeStepsActivity.class.getSimpleName();
     public static final String EXTRA_RECIPE_ID = "id";
 
     public RecipeStepsActivity() {

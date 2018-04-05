@@ -19,6 +19,7 @@ public class Ingredient {
     }
 
     public String getMeasure() {
+        //  return new DecimalFormat("0.####").format(Double.parseDouble(measure));
         return measure;
     }
 

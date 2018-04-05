@@ -8,13 +8,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -58,8 +56,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private DataSource.Factory dataSourceFactory;
     private int stepId;
     private int recipeId;
-    private Step step;
     private List<Recipe> recipes;
+    private ImageButton btnRightRecipe;
+    private ImageButton btnLeftRecipe;
 
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
             ".net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4";
@@ -71,7 +70,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
     public static RecipeMediaFragment newInstance(String url, int stepId, int recipeId) {
         Bundle args = new Bundle();
-        Log.i(TAG, "Sheila This is the URL => " + url);
         args.putString(EXTRA_VIDEO_URL, url);
         args.putInt(EXTRA_ID, stepId);
         args.putInt(EXTRA_RECIPE_ID, recipeId);
@@ -120,6 +118,10 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             @Override
             public Fragment getItem(int position) {
                 Step step = steps.get(position);
+                if (!TextUtils.isEmpty(step.getVideoURL())) {
+                    videoUrl = step.getVideoURL();
+                }
+                playerView.hideController();
                 return StepsFragment.newInstance(step.getDescription());
             }
 
@@ -139,8 +141,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
             @Override
             public void onPageSelected(int position) {
-                Log.e("Sheila", "This is the place to handle ExoPlayer change URL "
-                        + position);
+                // Stop the player and start the next video
+                exoPlayer.stop(true);
+                initializePlayer();
             }
 
             @Override
@@ -148,38 +151,22 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
             }
         });
-//
-//        for (int i = 0; i < steps.size(); i++) {
-//            if (recipes.get(recipeId).getSteps().equals(stepId)) {
-//                viewPager.setCurrentItem(i);
-//                break;
-//            }
-//        }
 
-
-
-
-        // Initialize the player.
         initializePlayer();
 
-//        TextView tvStepInstruction = view.findViewById(R.id.recipe_step_instruction);
-//        String description = recipes.get(recipeId).getSteps().get(stepId).getDescription();
-//        tvStepInstruction.setText(recipes.get(recipeId).getSteps().get(stepId).getDescription());
-        Button nextRecipe = view.findViewById(R.id.btn_next);
-        nextRecipe.setOnClickListener(new View.OnClickListener() {
+        btnRightRecipe = view.findViewById(R.id.right_nav);
+        btnRightRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                viewPager.arrowScroll(View.FOCUS_RIGHT);
+            }
+        });
 
-                int current = viewPager.getCurrentItem();
-                if (current < steps.size() -1) {
-                    viewPager.setCurrentItem(current + 1);
-                    Toast.makeText(v.getContext(), "Clicked Next ~ " + current,
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(v.getContext(), "Reached limit ~ " + current,
-                            Toast.LENGTH_SHORT).show();
-                }
-
+        btnLeftRecipe = view.findViewById(R.id.left_nav);
+        btnLeftRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.arrowScroll(View.FOCUS_LEFT);
             }
         });
 

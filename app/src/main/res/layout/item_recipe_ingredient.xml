@@ -34,7 +34,7 @@
                     android:id="@+id/quantity"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="5dp"
+                    android:paddingRight="2dp"
                     android:textColor="#000000"
                     android:textSize="@dimen/recipe_text_size"
                     android:text="@{String.valueOf(model.quantity)}"
