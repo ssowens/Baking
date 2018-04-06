@@ -29,4 +29,10 @@ public class MainActivity extends SingleFragmentActivity {
             return null;
         }
     }
+
+    @Override
+    protected int getLayoutResId() {
+        return super.getLayoutResId();
+        //return R.layout.activity_masterdetail;
+    }
 }

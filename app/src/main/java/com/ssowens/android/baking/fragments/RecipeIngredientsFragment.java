@@ -1,6 +1,7 @@
 package com.ssowens.android.baking.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,12 +27,10 @@ import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EX
 import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_NAME;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RecipeIngredientsFragment extends Fragment {
 
     private static final String TAG = RecipeIngredientsFragment.class.getSimpleName();
+    private Callbacks callbacks;
 
     RecyclerView recyclerView;
     RecipeIngredientsStepsAdapter recipeIngredientsAdapter;
@@ -40,6 +39,19 @@ public class RecipeIngredientsFragment extends Fragment {
 
     public RecipeIngredientsFragment() {
         // Required empty public constructor
+    }
+
+    /**
+     * Required interface for hosting activities
+     */
+    public interface Callbacks {
+        void onStepSelected(Step step);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        callbacks = (Callbacks) context;
     }
 
     @Override
@@ -52,10 +64,16 @@ public class RecipeIngredientsFragment extends Fragment {
             recipeName = args.getString(EXTRA_RECIPE_NAME, "Baking");
         }
 
-        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(recipeName);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callbacks = null;
     }
 
     public static RecipeIngredientsFragment newInstance(int id, String name) {

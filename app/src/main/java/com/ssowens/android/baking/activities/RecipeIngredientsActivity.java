@@ -7,11 +7,13 @@ import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.fragments.RecipeIngredientsFragment;
+import com.ssowens.android.baking.models.Step;
 
 /**
  * Created by sowens on 3/22/18.
  */
-public class RecipeIngredientsActivity extends SingleFragmentActivity {
+public class RecipeIngredientsActivity extends SingleFragmentActivity implements
+        RecipeIngredientsFragment.Callbacks {
 
     private static final String TAG = RecipeIngredientsActivity.class.getSimpleName();
     public static final String EXTRA_RECIPE_ID = "id";
@@ -36,6 +38,20 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity {
             Toast.makeText(this, getString(R.string.no_internet_service),
                     Toast.LENGTH_SHORT).show();
             return null;
+        }
+    }
+
+    @Override
+    public void onStepSelected(Step step) {  // pass in here what i need
+
+        if (findViewById(R.id.detail_fragment_container) == null) {
+            // TODO
+            Log.i(TAG, "Sheila No detail fragment container");
+            //Intent intent =
+        } else {
+            // TODO
+            //Fragment newDetail = RecipeMediaFragment.newInstance()
+            Log.i(TAG, "Sheila must be a tablet");
         }
     }
 }
