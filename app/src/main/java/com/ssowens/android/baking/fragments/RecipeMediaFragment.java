@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +40,7 @@ import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_NAME;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
@@ -56,6 +59,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private DataSource.Factory dataSourceFactory;
     private int stepId;
     private int recipeId;
+    private String recipeName;
     private List<Recipe> recipes;
     private ImageButton btnRightRecipe;
     private ImageButton btnLeftRecipe;
@@ -68,11 +72,13 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         // Required empty public constructor
     }
 
-    public static RecipeMediaFragment newInstance(String url, int stepId, int recipeId) {
+    public static RecipeMediaFragment newInstance(String url, int stepId, int recipeId,
+                                                 String recipeName) {
         Bundle args = new Bundle();
         args.putString(EXTRA_VIDEO_URL, url);
         args.putInt(EXTRA_ID, stepId);
         args.putInt(EXTRA_RECIPE_ID, recipeId);
+        args.putString(EXTRA_RECIPE_NAME, recipeName);
         RecipeMediaFragment fragment = new RecipeMediaFragment();
         fragment.setArguments(args);
         return fragment;
@@ -86,6 +92,12 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             videoUrl = args.getString(EXTRA_VIDEO_URL, URL);
             stepId = args.getInt(EXTRA_ID);
             recipeId = args.getInt(EXTRA_RECIPE_ID);
+            recipeName = args.getString(EXTRA_RECIPE_NAME);
+        }
+
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(recipeName);
         }
 
         recipes = RecipeCollection.get(getActivity()).getRecipes();

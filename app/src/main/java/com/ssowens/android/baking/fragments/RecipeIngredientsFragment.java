@@ -4,6 +4,8 @@ package com.ssowens.android.baking.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_ID;
+import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_NAME;
 
 
 /**
@@ -33,6 +36,7 @@ public class RecipeIngredientsFragment extends Fragment {
     RecyclerView recyclerView;
     RecipeIngredientsStepsAdapter recipeIngredientsAdapter;
     int recipeId;
+    String recipeName;
 
     public RecipeIngredientsFragment() {
         // Required empty public constructor
@@ -45,13 +49,19 @@ public class RecipeIngredientsFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             recipeId = args.getInt(EXTRA_RECIPE_ID, 0);
+            recipeName = args.getString(EXTRA_RECIPE_NAME, "Baking");
+        }
+
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(recipeName);
         }
     }
 
-    public static RecipeIngredientsFragment newInstance(int id) {
+    public static RecipeIngredientsFragment newInstance(int id, String name) {
         Bundle args = new Bundle();
         args.putInt(EXTRA_RECIPE_ID, id);
-        Log.i(TAG, "This is the recipe*& id => " + id);
+        args.putString(EXTRA_RECIPE_NAME, name);
 
         RecipeIngredientsFragment fragment = new RecipeIngredientsFragment();
         fragment.setArguments(args);
@@ -80,14 +90,10 @@ public class RecipeIngredientsFragment extends Fragment {
         objects.add(getContext().getString(R.string.recipe_ingredients_title));
         objects.addAll(ingredients);
 
-//        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId);
-//        recipeIngredientsAdapter.setIngredientList(objects);
-//        recipeIngredientsAdapter.notifyDataSetChanged();
-//        recyclerView.setAdapter(recipeIngredientsAdapter);
         objects.add(getContext().getString(R.string.recipe_steps));
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
         objects.addAll(steps);
-        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId);
+        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId, recipeName);
         recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);

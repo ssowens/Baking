@@ -34,13 +34,14 @@
             android:id="@+id/recipe_step_instruction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
             android:gravity="center_horizontal"
             android:paddingBottom="40dp"
-            android:text="This is a recipe step"
             android:textSize="80sp"
             android:visibility="gone"
+            android:textStyle="bold"
             tools:text="This is the recipe step instruction"/>
 
         <FrameLayout

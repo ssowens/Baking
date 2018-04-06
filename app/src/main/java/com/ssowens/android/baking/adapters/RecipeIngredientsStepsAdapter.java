@@ -20,6 +20,7 @@ import com.ssowens.android.baking.models.Step;
 
 import java.util.List;
 
+import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_NAME;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
@@ -33,6 +34,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
 
     private List<Object> items;
     private int recipeId;
+    private String recipeName;
 
     private static final String TAG = RecipeIngredientsStepsAdapter.class.getSimpleName();
 
@@ -40,9 +42,10 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         this.items = ingredientsList;
     }
 
-    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList, int recipeId) {
+    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList, int recipeId, String name) {
         this.items = ingredientsList;
         this.recipeId = recipeId;
+        this.recipeName = name;
     }
 
     private static final int INGREDIENTS = 1;
@@ -70,7 +73,6 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         }
     }
 
-
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder");
         final int itemType = getItemViewType(position);
@@ -92,11 +94,9 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-
         private ItemRecipeIngredientBinding binding1;
         private ItemRecipeStepsBinding binding2;
         private TextView header;
-
 
         public MyViewHolder(TextView textView) {
             super(textView);
@@ -135,6 +135,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                         intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
                         intent.putExtra(EXTRA_ID, binding.getModel().getId());
                         intent.putExtra(EXTRA_RECIPE_ID, recipeId);
+                        intent.putExtra(EXTRA_RECIPE_NAME, recipeName);
                         v.getContext().startActivity(intent);
                     }
                 }
