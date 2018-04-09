@@ -46,9 +46,8 @@ import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VI
 /**
  * Created by Sheila Owens on 3/30/18.
  */
-public class RecipeMediaFragment extends Fragment implements View.OnClickListener, PlayerControlView.VisibilityListener {
-
-    private static final String TAG = RecipeMediaFragment.class.getSimpleName();
+public class RecipeMediaFragment extends Fragment implements View.OnClickListener,
+        PlayerControlView.VisibilityListener {
 
     private String videoUrl;
     private SimpleExoPlayer exoPlayer;
@@ -73,7 +72,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     }
 
     public static RecipeMediaFragment newInstance(String url, int stepId, int recipeId,
-                                                 String recipeName) {
+                                                  String recipeName) {
         Bundle args = new Bundle();
         args.putString(EXTRA_VIDEO_URL, url);
         args.putInt(EXTRA_ID, stepId);
@@ -95,7 +94,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             recipeName = args.getString(EXTRA_RECIPE_NAME);
         }
 
-        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(recipeName);
         }
@@ -247,4 +246,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         super.onResume();
         exoPlayer.prepare(videoSource);
     }
+
+
 }

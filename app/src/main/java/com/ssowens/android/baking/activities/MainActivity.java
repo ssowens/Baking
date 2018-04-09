@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.fragments.RecipeCardsFragment;
 
@@ -28,11 +27,5 @@ public class MainActivity extends SingleFragmentActivity {
                     Toast.LENGTH_SHORT).show();
             return null;
         }
-    }
-
-    @Override
-    protected int getLayoutResId() {
-        return super.getLayoutResId();
-        //return R.layout.activity_masterdetail;
     }
 }

@@ -1,5 +1,6 @@
 package com.ssowens.android.baking.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -7,17 +8,21 @@ import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.fragments.RecipeIngredientsFragment;
-import com.ssowens.android.baking.models.Step;
+import com.ssowens.android.baking.fragments.RecipeMediaFragment;
+
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
  * Created by sowens on 3/22/18.
  */
-public class RecipeIngredientsActivity extends SingleFragmentActivity implements
-        RecipeIngredientsFragment.Callbacks {
+public class RecipeIngredientsActivity extends SingleFragmentActivity
+        implements RecipeIngredientsFragment.Callbacks {
 
     private static final String TAG = RecipeIngredientsActivity.class.getSimpleName();
-    public static final String EXTRA_RECIPE_ID = "id";
+    public static final String EXTRA_RECIPE_ID = "recipeId";
     public static final String EXTRA_RECIPE_NAME = "name";
+
 
     public RecipeIngredientsActivity() {
     }
@@ -42,16 +47,27 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity implements
     }
 
     @Override
-    public void onStepSelected(Step step) {  // pass in here what i need
-
+    public void onStepSelected(String url, int stepId, int recipeId, String recipeName) {
         if (findViewById(R.id.detail_fragment_container) == null) {
-            // TODO
-            Log.i(TAG, "Sheila No detail fragment container");
-            //Intent intent =
+            Log.i(TAG, "Sheila this is handset %s %");
+            Intent intent = new Intent(this, RecipeMediaActivity.class);
+            intent.putExtra(EXTRA_VIDEO_URL, url);
+            intent.putExtra(EXTRA_ID, stepId);
+            intent.putExtra(EXTRA_RECIPE_ID, recipeId);
+            intent.putExtra(EXTRA_RECIPE_NAME, recipeName);
+            startActivity(intent);
         } else {
-            // TODO
-            //Fragment newDetail = RecipeMediaFragment.newInstance()
-            Log.i(TAG, "Sheila must be a tablet");
+            Log.i(TAG, "Sheila this is tablet");
+            Fragment newDetail = RecipeMediaFragment.newInstance(url, stepId, recipeId, recipeName);
+            getSupportFragmentManager().beginTransaction().replace(R.id.detail_fragment_container,
+                    newDetail).commit();
+
         }
     }
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_masterdetail;
+    }
+
 }

@@ -30,7 +30,7 @@ import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EX
 public class RecipeIngredientsFragment extends Fragment {
 
     private static final String TAG = RecipeIngredientsFragment.class.getSimpleName();
-    private Callbacks callbacks;
+    public Callbacks callbacks;
 
     RecyclerView recyclerView;
     RecipeIngredientsStepsAdapter recipeIngredientsAdapter;
@@ -45,13 +45,27 @@ public class RecipeIngredientsFragment extends Fragment {
      * Required interface for hosting activities
      */
     public interface Callbacks {
-        void onStepSelected(Step step);
+        void onStepSelected(String url, int stepId, int recipeId, String recipeName);
     }
+
+    RecipeIngredientsStepsAdapter.ClickListener clickListener =
+            new RecipeIngredientsStepsAdapter.ClickListener() {
+                @Override
+                public void onItemClicked(String url, int stepId, int recipeId, String recipeName) {
+                    callbacks.onStepSelected(url, stepId, recipeId, recipeName);
+                }
+            };
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         callbacks = (Callbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callbacks = null;
     }
 
     @Override
@@ -68,12 +82,7 @@ public class RecipeIngredientsFragment extends Fragment {
         if (actionBar != null) {
             actionBar.setTitle(recipeName);
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        callbacks = null;
+        setHasOptionsMenu(true);
     }
 
     public static RecipeIngredientsFragment newInstance(int id, String name) {
@@ -111,7 +120,8 @@ public class RecipeIngredientsFragment extends Fragment {
         objects.add(getContext().getString(R.string.recipe_steps));
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
         objects.addAll(steps);
-        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId, recipeName);
+        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId,
+                recipeName, clickListener);
         recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);
@@ -122,4 +132,5 @@ public class RecipeIngredientsFragment extends Fragment {
         super.onResume();
         updateUI();
     }
+
 }

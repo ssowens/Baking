@@ -35,9 +35,5 @@ public class RecipeMediaActivity extends SingleFragmentActivity {
         }
         return null;
     }
-
-
-
-
 }
 
