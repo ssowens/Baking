@@ -1,5 +1,7 @@
 package com.ssowens.android.baking.models;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by Sheila Owens on 3/18/18.
  */
@@ -19,7 +21,6 @@ public class Ingredient {
     }
 
     public String getMeasure() {
-        //  return new DecimalFormat("0.####").format(Double.parseDouble(measure));
         return measure;
     }
 
@@ -35,8 +36,9 @@ public class Ingredient {
         this.ingredient = ingredient;
     }
 
-    public double getQuantity() {
-        return quantity;
+    public String getQuantity() {
+        String value =  new DecimalFormat("0.##").format(quantity);
+        return value;
     }
 
     public void setQuantity(double quantity) {
