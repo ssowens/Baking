@@ -14,6 +14,7 @@ public class RecipeMediaActivity extends SingleFragmentActivity {
     public static final String EXTRA_VIDEO_URL = "videoUrl";
     public static final String EXTRA_ID = "id";
     public static final String EXTRA_RECIPE_ID = "recipeId";
+    public static final String EXTRA_RECIPE_NAME = "name";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,16 +27,13 @@ public class RecipeMediaActivity extends SingleFragmentActivity {
             String url = (String) getIntent().getSerializableExtra(EXTRA_VIDEO_URL);
             int stepId = (int) getIntent().getSerializableExtra(EXTRA_ID);
             int recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
-            return RecipeMediaFragment.newInstance(url, stepId, recipeId);
+            String recipeName = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
+            return RecipeMediaFragment.newInstance(url, stepId, recipeId, recipeName);
         } else {
             Toast.makeText(this, getString(R.string.no_internet_service),
                     Toast.LENGTH_SHORT).show();
         }
         return null;
     }
-
-
-
-
 }
 

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_ID;
+import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_NAME;
 
 /**
  * Created by Sheila Owens on 3/18/18.
@@ -41,7 +42,6 @@ public class RecipeCardsAdapter extends RecyclerView.Adapter<RecipeCardsAdapter
         return new MyViewHolder(cardViewItemBinding);
     }
 
-
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Recipe recipe = recipeList.get(position);
         holder.bind(recipe);
@@ -66,6 +66,7 @@ public class RecipeCardsAdapter extends RecyclerView.Adapter<RecipeCardsAdapter
                             + " " + binding.getRecipe().getId(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
                     intent.putExtra(EXTRA_RECIPE_ID, binding.getRecipe().getId());
+                    intent.putExtra(EXTRA_RECIPE_NAME, binding.getRecipe().getName());
                     v.getContext().startActivity(intent);
                 }
             });

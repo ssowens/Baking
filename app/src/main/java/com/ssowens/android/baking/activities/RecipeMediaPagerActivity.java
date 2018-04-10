@@ -20,6 +20,7 @@ import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
+import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_NAME;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
 
 /**
@@ -54,6 +55,7 @@ public class RecipeMediaPagerActivity extends FragmentActivity {
         final int recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
         final int stepId = (int) getIntent().getSerializableExtra(EXTRA_ID);
         final String url = (String) getIntent().getSerializableExtra(EXTRA_VIDEO_URL);
+        final String recipeName = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
 
         viewPager = findViewById(R.id.media_view_pager);
 
@@ -65,7 +67,7 @@ public class RecipeMediaPagerActivity extends FragmentActivity {
             @Override
             public Fragment getItem(int position) {
                 Step step = steps.get(position);
-                return RecipeMediaFragment.newInstance(url, stepId, recipeId);
+                return RecipeMediaFragment.newInstance(url, stepId, recipeId, recipeName);
             }
 
             @Override
@@ -80,7 +82,5 @@ public class RecipeMediaPagerActivity extends FragmentActivity {
                 break;
             }
         }
-
-        //FragmentRecipeMediaBinding fragmentRecipeMediaBinding =
     }
 }

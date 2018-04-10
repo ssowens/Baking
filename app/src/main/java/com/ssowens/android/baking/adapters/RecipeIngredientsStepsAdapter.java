@@ -1,6 +1,5 @@
 package com.ssowens.android.baking.adapters;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
-import com.ssowens.android.baking.activities.RecipeMediaActivity;
 import com.ssowens.android.baking.databinding.ItemRecipeIngredientBinding;
 import com.ssowens.android.baking.databinding.ItemRecipeStepsBinding;
 import com.ssowens.android.baking.models.Ingredient;
@@ -20,19 +18,19 @@ import com.ssowens.android.baking.models.Step;
 
 import java.util.List;
 
-import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
-import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
-import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VIDEO_URL;
+import static com.ssowens.android.baking.fragments.RecipeIngredientsFragment.Callbacks;
 
 /**
  * Created by Sheila Owens on 3/18/18.
  */
 
 public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIngredientsStepsAdapter
-        .MyViewHolder> {
+        .MyViewHolder> implements Callbacks {
 
     private List<Object> items;
     private int recipeId;
+    private String recipeName;
+    private ClickListener clickListener;
 
     private static final String TAG = RecipeIngredientsStepsAdapter.class.getSimpleName();
 
@@ -40,14 +38,30 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         this.items = ingredientsList;
     }
 
-    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList, int recipeId) {
+    public RecipeIngredientsStepsAdapter(List<Object> ingredientsList, int recipeId, String name,
+                                         ClickListener clickListener) {
         this.items = ingredientsList;
         this.recipeId = recipeId;
+        this.recipeName = name;
+        this.clickListener = clickListener;
     }
 
     private static final int INGREDIENTS = 1;
     private static final int STEPS = 2;
     private static final int HEADER = 3;
+
+
+    public interface ClickListener {
+        void onItemClicked(String url,
+                           int stepId,
+                           int recipeId,
+                           String recipeName);
+    }
+
+    @Override
+    public void onStepSelected(String url, int stepId, int recipeId, String recipeName) {
+        // TODO
+    }
 
     @NonNull
     @Override
@@ -60,7 +74,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                     .inflate(layoutInflater,
                             parent, false);
             return new MyViewHolder(recipeIngredientItemBinding);
-        } else  if (viewType == STEPS) {
+        } else if (viewType == STEPS) {
             ItemRecipeStepsBinding itemRecipeStepsBinding = ItemRecipeStepsBinding.inflate
                     (layoutInflater, parent, false);
             return new MyViewHolder(itemRecipeStepsBinding);
@@ -69,7 +83,6 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
             return new MyViewHolder(header);
         }
     }
-
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder");
@@ -80,7 +93,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         } else if (itemType == STEPS) {
             holder.bindStep(data);
         } else {
-            holder.header.setText((String)data);
+            holder.header.setText((String) data);
         }
     }
 
@@ -92,16 +105,15 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-
         private ItemRecipeIngredientBinding binding1;
         private ItemRecipeStepsBinding binding2;
         private TextView header;
-
 
         public MyViewHolder(TextView textView) {
             super(textView);
             this.header = textView;
         }
+
         public MyViewHolder(final ItemRecipeIngredientBinding binding) {
             super(binding.getRoot());
             this.binding1 = binding;
@@ -122,20 +134,16 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked recipeID " + recipeId +
-                                    " step id " + binding.getModel().getId(),
-                            Toast.LENGTH_LONG).show();
                     if (TextUtils.isEmpty(binding.getModel().getVideoURL())) {
                         Toast.makeText(v.getContext(), v.getContext().getString(R.string
-                                .no_video_avail) +
+                                        .no_video_avail) +
                                         binding.getModel().getShortDescription(),
                                 Toast.LENGTH_LONG).show();
                     } else {
-                        Intent intent = new Intent(v.getContext(), RecipeMediaActivity.class);
-                        intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
-                        intent.putExtra(EXTRA_ID, binding.getModel().getId());
-                        intent.putExtra(EXTRA_RECIPE_ID, recipeId);
-                        v.getContext().startActivity(intent);
+                        clickListener.onItemClicked(binding.getModel().getVideoURL(),
+                                binding.getModel().getId(),
+                                recipeId,
+                                recipeName);
                     }
                 }
             });

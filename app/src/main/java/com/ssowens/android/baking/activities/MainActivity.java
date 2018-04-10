@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.fragments.RecipeCardsFragment;
 
 public class MainActivity extends SingleFragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

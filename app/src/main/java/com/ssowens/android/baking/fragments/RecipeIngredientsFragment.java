@@ -1,9 +1,12 @@
 package com.ssowens.android.baking.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,21 +24,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_ID;
+import static com.ssowens.android.baking.activities.RecipeIngredientsActivity.EXTRA_RECIPE_NAME;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RecipeIngredientsFragment extends Fragment {
 
     private static final String TAG = RecipeIngredientsFragment.class.getSimpleName();
+    public Callbacks callbacks;
 
     RecyclerView recyclerView;
     RecipeIngredientsStepsAdapter recipeIngredientsAdapter;
     int recipeId;
+    String recipeName;
 
     public RecipeIngredientsFragment() {
         // Required empty public constructor
+    }
+
+    /**
+     * Required interface for hosting activities
+     */
+    public interface Callbacks {
+        void onStepSelected(String url, int stepId, int recipeId, String recipeName);
+    }
+
+    RecipeIngredientsStepsAdapter.ClickListener clickListener =
+            new RecipeIngredientsStepsAdapter.ClickListener() {
+                @Override
+                public void onItemClicked(String url, int stepId, int recipeId, String recipeName) {
+                    callbacks.onStepSelected(url, stepId, recipeId, recipeName);
+                }
+            };
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        callbacks = (Callbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callbacks = null;
     }
 
     @Override
@@ -45,13 +75,20 @@ public class RecipeIngredientsFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             recipeId = args.getInt(EXTRA_RECIPE_ID, 0);
+            recipeName = args.getString(EXTRA_RECIPE_NAME, "Baking");
         }
+
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(recipeName);
+        }
+        setHasOptionsMenu(true);
     }
 
-    public static RecipeIngredientsFragment newInstance(int id) {
+    public static RecipeIngredientsFragment newInstance(int id, String name) {
         Bundle args = new Bundle();
         args.putInt(EXTRA_RECIPE_ID, id);
-        Log.i(TAG, "This is the recipe*& id => " + id);
+        args.putString(EXTRA_RECIPE_NAME, name);
 
         RecipeIngredientsFragment fragment = new RecipeIngredientsFragment();
         fragment.setArguments(args);
@@ -80,14 +117,11 @@ public class RecipeIngredientsFragment extends Fragment {
         objects.add(getContext().getString(R.string.recipe_ingredients_title));
         objects.addAll(ingredients);
 
-//        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId);
-//        recipeIngredientsAdapter.setIngredientList(objects);
-//        recipeIngredientsAdapter.notifyDataSetChanged();
-//        recyclerView.setAdapter(recipeIngredientsAdapter);
         objects.add(getContext().getString(R.string.recipe_steps));
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();
         objects.addAll(steps);
-        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId);
+        recipeIngredientsAdapter = new RecipeIngredientsStepsAdapter(objects, recipeId,
+                recipeName, clickListener);
         recipeIngredientsAdapter.setIngredientList(objects);
         recipeIngredientsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(recipeIngredientsAdapter);
@@ -98,4 +132,5 @@ public class RecipeIngredientsFragment extends Fragment {
         super.onResume();
         updateUI();
     }
+
 }

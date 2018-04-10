@@ -4,6 +4,7 @@ package com.ssowens.android.baking.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class RecipeCardsFragment extends Fragment {
 
     private static final String TAG = RecipeCardsFragment.class.getSimpleName();
     private static final String RECIPE_URL = "https://d17h27t6h515a5.cloudfront.net";
+    public static final int DEVICE_TABLET_THRESHOLD = 2;
 
     List<Recipe> recipeList = new ArrayList<>();
     RecipeCardsAdapter recyclerAdapter;
@@ -73,7 +75,6 @@ public class RecipeCardsFragment extends Fragment {
                 try {
                     recipeList = response.body();
                     RecipeCollection.get(getActivity()).addListRecipeCollection(recipeList);
-                    Log.e(TAG, "onResponse  " + "Recipe List size = " + response.body().size());
                     recyclerAdapter.setRecipeList(recipeList);
                     recyclerAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
@@ -98,7 +99,11 @@ public class RecipeCardsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
         recyclerView = rootView.findViewById(R.id.recycle_view);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if (getContext().getResources().getInteger(R.integer.device_layout_type) > DEVICE_TABLET_THRESHOLD) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
         recyclerView.setAdapter(recyclerAdapter);
 
         return rootView;
