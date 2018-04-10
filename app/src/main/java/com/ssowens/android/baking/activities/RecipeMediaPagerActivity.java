@@ -82,7 +82,5 @@ public class RecipeMediaPagerActivity extends FragmentActivity {
                 break;
             }
         }
-
-        //FragmentRecipeMediaBinding fragmentRecipeMediaBinding =
     }
 }

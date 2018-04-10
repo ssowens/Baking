@@ -134,22 +134,12 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked recipeID " + recipeId +
-                                    " step id " + binding.getModel().getId(),
-                            Toast.LENGTH_LONG).show();
                     if (TextUtils.isEmpty(binding.getModel().getVideoURL())) {
                         Toast.makeText(v.getContext(), v.getContext().getString(R.string
                                         .no_video_avail) +
                                         binding.getModel().getShortDescription(),
                                 Toast.LENGTH_LONG).show();
                     } else {
-//                        Intent intent = new Intent(v.getContext(), RecipeMediaActivity.class);
-//                        intent.putExtra(EXTRA_VIDEO_URL, binding.getModel().getVideoURL());
-//                        intent.putExtra(EXTRA_ID, binding.getModel().getId());
-//                        intent.putExtra(EXTRA_RECIPE_ID, recipeId);
-//                        intent.putExtra(EXTRA_RECIPE_NAME, recipeName);
-//                        v.getContext().startActivity(intent);
-
                         clickListener.onItemClicked(binding.getModel().getVideoURL(),
                                 binding.getModel().getId(),
                                 recipeId,

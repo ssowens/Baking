@@ -42,7 +42,6 @@ public class RecipeCardsAdapter extends RecyclerView.Adapter<RecipeCardsAdapter
         return new MyViewHolder(cardViewItemBinding);
     }
 
-
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Recipe recipe = recipeList.get(position);
         holder.bind(recipe);

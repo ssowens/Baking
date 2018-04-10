@@ -11,7 +11,6 @@ public class MainActivity extends SingleFragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate()");

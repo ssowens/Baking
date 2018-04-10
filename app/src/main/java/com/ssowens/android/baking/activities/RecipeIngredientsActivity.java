@@ -23,7 +23,6 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity
     public static final String EXTRA_RECIPE_ID = "recipeId";
     public static final String EXTRA_RECIPE_NAME = "name";
 
-
     public RecipeIngredientsActivity() {
     }
 
@@ -49,7 +48,6 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity
     @Override
     public void onStepSelected(String url, int stepId, int recipeId, String recipeName) {
         if (findViewById(R.id.detail_fragment_container) == null) {
-            Log.i(TAG, "Sheila this is handset %s %");
             Intent intent = new Intent(this, RecipeMediaActivity.class);
             intent.putExtra(EXTRA_VIDEO_URL, url);
             intent.putExtra(EXTRA_ID, stepId);
@@ -57,7 +55,6 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity
             intent.putExtra(EXTRA_RECIPE_NAME, recipeName);
             startActivity(intent);
         } else {
-            Log.i(TAG, "Sheila this is tablet");
             Fragment newDetail = RecipeMediaFragment.newInstance(url, stepId, recipeId, recipeName);
             getSupportFragmentManager().beginTransaction().replace(R.id.detail_fragment_container,
                     newDetail).commit();
