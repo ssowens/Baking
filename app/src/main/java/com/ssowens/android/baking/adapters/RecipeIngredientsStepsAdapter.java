@@ -169,6 +169,4 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
         } else
             return HEADER;
     }
-
-
 }
