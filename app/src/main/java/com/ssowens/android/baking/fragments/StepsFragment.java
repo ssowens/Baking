@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ssowens.android.baking.R;
+
 public class StepsFragment extends Fragment {
 
     public static StepsFragment newInstance(String step) {
@@ -22,9 +24,10 @@ public class StepsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.step_content, container, false);
         String step = getArguments().getString("content");
 
-        TextView text = new TextView(getActivity());
+        TextView text = view.findViewById(R.id.textStep);
         text.setText(step);
         return text;
     }

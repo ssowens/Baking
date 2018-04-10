@@ -2,4 +2,6 @@
 <resources>
     <item name="activity_masterdetail" type="layout">@layout/activity_fragment</item>
     <item name="device_layout_type" type="integer">0</item>
+    <item name="video_weight" type="integer">2</item>
+    <item name="content_weight" type="integer">3</item>
 </resources>

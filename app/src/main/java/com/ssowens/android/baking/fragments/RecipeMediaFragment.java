@@ -33,9 +33,11 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.RecipeCollection;
+import com.ssowens.android.baking.activities.RecipeMediaActivity;
 import com.ssowens.android.baking.models.Recipe;
 import com.ssowens.android.baking.models.Step;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
@@ -47,12 +49,13 @@ import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_VI
  * Created by Sheila Owens on 3/30/18.
  */
 public class RecipeMediaFragment extends Fragment implements View.OnClickListener,
-        PlayerControlView.VisibilityListener {
+        PlayerControlView.VisibilityListener, RecipeMediaActivity.OnConfigurationRotate {
 
     private String videoUrl;
     private SimpleExoPlayer exoPlayer;
     public View view;
     private PlayerView playerView;
+    private ViewPager viewPager;
     private MediaSource videoSource;
     private boolean shouldAutoPlay;
     private DataSource.Factory dataSourceFactory;
@@ -62,6 +65,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private List<Recipe> recipes;
     private ImageButton btnRightRecipe;
     private ImageButton btnLeftRecipe;
+    private View buttonLayout;
+
+
 
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
             ".net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4";
@@ -119,10 +125,17 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         view = inflater.inflate(R.layout.fragment_recipe_media, container, false);
         playerView = view.findViewById(R.id.playerView);
 
-        final ViewPager viewPager = view.findViewById(R.id.media_view_pager);
-
+        viewPager = view.findViewById(R.id.media_view_pager);
+        buttonLayout = view.findViewById(R.id.buttonLayout);
         recipes = RecipeCollection.get(getActivity()).getRecipes();
-        final List<Step> steps = recipes.get(recipeId).getSteps();
+        final ArrayList<Step> steps = new ArrayList<>();
+
+        for (Recipe recipe : recipes) {
+            if (recipe.getId() == recipeId) {
+                steps.addAll(recipe.getSteps());
+                break;
+            }
+        }
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
@@ -245,6 +258,19 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     public void onResume() {
         super.onResume();
         exoPlayer.prepare(videoSource);
+    }
+
+    @Override
+    public void onRotate(boolean landscape) {
+        if (landscape) {
+            //TODO: gone actionbar
+            //gone bottom buttons
+            viewPager.setVisibility(View.GONE);
+            buttonLayout.setVisibility(View.GONE);
+        } else {
+            viewPager.setVisibility(View.VISIBLE);
+            buttonLayout.setVisibility(View.VISIBLE);
+        }
     }
 
 

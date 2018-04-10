@@ -20,14 +20,14 @@
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/playerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_height="0dp"
+            android:layout_weight="@integer/video_weight"/>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/media_view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="@integer/content_weight">
         </android.support.v4.view.ViewPager>
 
         <TextView
@@ -45,6 +45,7 @@
             tools:text="This is the recipe step instruction"/>
 
         <FrameLayout
+            android:id="@+id/buttonLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
