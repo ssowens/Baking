@@ -68,7 +68,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private View buttonLayout;
 
 
-
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
             ".net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4";
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
@@ -234,13 +233,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         exoPlayer = null;
     }
 
-    /**
-     * Release the player when the activity is destroyed.
-     */
     @Override
     public void onDestroy() {
         super.onDestroy();
-        releasePlayer();
     }
 
     @Override
@@ -248,16 +243,55 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
     }
 
+    /**
+     *  As our app can be visible but not active in split window mode, we need to initialize the
+     *  player in onStart.
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (Util.SDK_INT > 23) {
+            initializePlayer();
+        }
+    }
+
+    /**
+     * Before API Level 24 there is no guarantee of onStop being called. So we have to release the
+     * player as early as possible in onPause.
+     */
     @Override
     public void onPause() {
         super.onPause();
-        exoPlayer.stop();
+        if (Util.SDK_INT <= 23) {
+            releasePlayer();
+        }
     }
 
+
+    /**
+     * Starting with API Level 24 (which brought multi and split window mode) onStop is
+     * guaranteed to be called and in the paused mode our activity is eventually still visible.
+     * Hence we need to wait releasing until onStop.
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (Util.SDK_INT > 23) {
+            releasePlayer();
+        }
+    }
+
+    /**
+     * Before API level 24 we wait as long as possible until we grab resources, so we wait until
+     * onResume before initializing the player.
+     */
     @Override
     public void onResume() {
         super.onResume();
-        exoPlayer.prepare(videoSource);
+        //exoPlayer.prepare(videoSource);
+        if ((Util.SDK_INT <= 23 || exoPlayer == null)) {
+            initializePlayer();
+        }
     }
 
     @Override

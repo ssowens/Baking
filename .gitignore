@@ -39,3 +39,4 @@ output.json
 obj/
 .externalNativeBuild
 .idea/misc.xml
+.idea/workspace.xml
