@@ -121,8 +121,7 @@ public class RecipeIngredientsStepsAdapter extends RecyclerView.Adapter<RecipeIn
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "Clicked " +
-                                    binding.getModel().getIngredient() + " " + binding.getModel()
-                                    .getIngredient(),
+                                    binding.getModel().getIngredient(),
                             Toast.LENGTH_LONG).show();
                 }
             });
