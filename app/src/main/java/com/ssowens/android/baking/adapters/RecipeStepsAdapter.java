@@ -65,9 +65,6 @@ public class RecipeStepsAdapter extends RecyclerView.Adapter<RecipeStepsAdapter.
                                     binding.getModel().getShortDescription() + " " + binding.getModel()
                                     .getDescription(),
                             Toast.LENGTH_LONG).show();
-//                    Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
-//                    intent.putExtra("id", binding.getRecipe().getId());
-//                    v.getContext().startActivity(intent);
                 }
             });
         }

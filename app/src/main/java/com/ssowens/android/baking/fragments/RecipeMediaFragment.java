@@ -263,8 +263,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     @Override
     public void onRotate(boolean landscape) {
         if (landscape) {
-            //TODO: gone actionbar
-            //gone bottom buttons
             viewPager.setVisibility(View.GONE);
             buttonLayout.setVisibility(View.GONE);
         } else {

@@ -3,7 +3,6 @@ package com.ssowens.android.baking.activities;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
@@ -50,10 +49,8 @@ public class RecipeMediaActivity extends SingleFragmentActivity {
         if (fragment != null) {
             fragment.onRotate(isLandscape);
         }
-        Log.e("Sheila", "test " + newConfig.orientation);
         if (isLandscape) {
             getSupportActionBar().hide();
-            // TODO HIDE STATUS BAR
         } else {
             getSupportActionBar().show();
         }

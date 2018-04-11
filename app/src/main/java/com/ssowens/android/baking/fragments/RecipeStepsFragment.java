@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,6 @@ public class RecipeStepsFragment extends Fragment {
     public static RecipeStepsFragment newInstance(int id) {
         Bundle args = new Bundle();
         args.putInt(EXTRA_RECIPE_ID, id);
-        Log.i(TAG, "This is the recipe id => " + id);
 
         RecipeStepsFragment fragment = new RecipeStepsFragment();
         fragment.setArguments(args);
