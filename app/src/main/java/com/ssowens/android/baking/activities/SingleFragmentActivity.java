@@ -16,6 +16,7 @@ import com.ssowens.android.baking.R;
  * Created by Sheila Owens on 3/21/18.
  */
 
+
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();
