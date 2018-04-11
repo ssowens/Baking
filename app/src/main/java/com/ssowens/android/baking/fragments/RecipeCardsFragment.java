@@ -78,7 +78,7 @@ public class RecipeCardsFragment extends Fragment {
                     recyclerAdapter.setRecipeList(recipeList);
                     recyclerAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
-                    Log.d(TAG, "onResponse" + "There is an error");
+                    Log.d(TAG, "onResponse" + getString(R.string.error_occurred));
                     e.printStackTrace();
                 }
             }
