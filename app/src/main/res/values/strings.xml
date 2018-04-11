@@ -10,4 +10,6 @@
     <string name="next_step">Next step</string>
     <string name="no_video_avail">No video available for \u0020</string>
     <string name="error_occurred">An error has occurred</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
