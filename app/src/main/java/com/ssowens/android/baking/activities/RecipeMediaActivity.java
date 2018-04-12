@@ -3,6 +3,7 @@ package com.ssowens.android.baking.activities;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.ssowens.android.baking.R;
@@ -28,13 +29,25 @@ public class RecipeMediaActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
+        String url;
+        int stepId;
+        int recipeId;
+        String recipeName;
         if (isOnline()) {
-            String url = (String) getIntent().getSerializableExtra(EXTRA_VIDEO_URL);
-            int stepId = (int) getIntent().getSerializableExtra(EXTRA_ID);
-            int recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
-            String recipeName = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
-            fragment =  RecipeMediaFragment.newInstance(url, stepId, recipeId, recipeName);
-            return fragment;
+            if (getIntent() != null) {
+                if (getIntent().getSerializableExtra(EXTRA_ID) != null ||
+                        getIntent().getSerializableExtra(EXTRA_RECIPE_ID) != null ||
+                        getIntent().getSerializableExtra(EXTRA_VIDEO_URL) != null ||
+                        getIntent().getSerializableExtra(EXTRA_RECIPE_NAME) != null) {
+
+                    stepId = (int) getIntent().getSerializableExtra(EXTRA_ID);
+                    recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
+                    url = (String) getIntent().getSerializableExtra(EXTRA_VIDEO_URL);
+                    recipeName = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
+                    fragment = RecipeMediaFragment.newInstance(url, stepId, recipeId, recipeName);
+                    return fragment;
+                }
+            }
         } else {
             Toast.makeText(this, getString(R.string.no_internet_service),
                     Toast.LENGTH_SHORT).show();
