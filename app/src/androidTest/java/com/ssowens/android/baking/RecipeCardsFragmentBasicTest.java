@@ -30,4 +30,5 @@ public class RecipeCardsFragmentBasicTest {
         // Perform Action on the View
         onView((withId(R.id.name))).perform(click());
     }
+
 }

@@ -32,9 +32,6 @@ public class RecipeMediaPagerActivity extends FragmentActivity {
     private ViewPager viewPager;
     private List<Recipe> recipes;
     private List<Step> steps;
-//    private int recipeId;
-//    private int stepId;
-//    private String url;
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
             ".net/topher/2017/April/58ffd974_-intro-creampie/-intro-creampie.mp4";
 
