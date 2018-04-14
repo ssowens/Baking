@@ -41,6 +41,7 @@
                 android:resource="@xml/recipe_widget_provider_info" />
         </receiver>
 
+        <service android:name=".services.GridWidgetService"/>
     </application>
 
 </manifest>
