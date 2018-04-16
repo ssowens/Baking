@@ -39,6 +39,7 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity
         if (isOnline()) {
             if (getIntent().getSerializableExtra(EXTRA_RECIPE_ID) != null ||
                     getIntent().getSerializableExtra(EXTRA_RECIPE_NAME) != null) {
+
                 recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
                 name = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
                 return RecipeIngredientsFragment.newInstance(recipeId, name);

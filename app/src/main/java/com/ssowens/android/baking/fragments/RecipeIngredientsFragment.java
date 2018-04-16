@@ -3,6 +3,7 @@ package com.ssowens.android.baking.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.RecipeCollection;
 import com.ssowens.android.baking.adapters.RecipeIngredientsStepsAdapter;
@@ -31,11 +33,14 @@ public class RecipeIngredientsFragment extends Fragment {
 
     private static final String TAG = RecipeIngredientsFragment.class.getSimpleName();
     public Callbacks callbacks;
+    public static final String JSON_INGREDIENTS_STRING = "ingredientsJsonStr";
+    public static final String SHARED_PREF_RECIPE_ID = "recipeId";
 
     RecyclerView recyclerView;
     RecipeIngredientsStepsAdapter recipeIngredientsAdapter;
     int recipeId;
     String recipeName;
+    private Gson gson;
 
     public RecipeIngredientsFragment() {
         // Required empty public constructor
@@ -116,6 +121,20 @@ public class RecipeIngredientsFragment extends Fragment {
         List<Object> objects = new ArrayList<>();
         objects.add(getContext().getString(R.string.recipe_ingredients_title));
         objects.addAll(ingredients);
+
+        // TODO SHEILA
+        // Get the ingredients for the widget and save them into SharedPreferences
+        gson = new Gson();
+        String ingredientsJsonStr = gson.toJson(ingredients);
+        Log.i(TAG, "json string = " + ingredientsJsonStr);
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString
+                (JSON_INGREDIENTS_STRING, ingredientsJsonStr).apply();
+
+        // TODD need the Recipe ID in the SharedPreferences too
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString
+                (JSON_INGREDIENTS_STRING, ingredientsJsonStr).apply();
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putInt
+                (SHARED_PREF_RECIPE_ID, recipeId).apply();
 
         objects.add(getContext().getString(R.string.recipe_steps));
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();

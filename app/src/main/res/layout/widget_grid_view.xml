@@ -2,35 +2,36 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
-    
+
     <GridView
         android:id="@+id/widget_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:numColumns="3">
-    </GridView>
+        android:numColumns="3"/>
 
     <RelativeLayout
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_centerInParent="true"
-            android:textAlignment="center"
+            android:gravity="center"
             android:text="@string/no_recipes_avail"
-            android:textSize="20sp"
+            android:textAlignment="center"
             android:textColor="#0000FF"
+            android:textSize="20sp"
             android:textStyle="bold"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.2"
-        android:src="@drawable/baking_icon"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.2"
+            android:src="@drawable/baking_icon"/>
     </RelativeLayout>
 
 </FrameLayout>
