@@ -10,11 +10,13 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.models.Ingredient;
 import com.ssowens.android.baking.provider.RecipeWidgetProvider;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.ssowens.android.baking.fragments.RecipeIngredientsFragment.JSON_INGREDIENTS_STRING;
@@ -65,20 +67,35 @@ public class RecipeIngredientsService extends IntentService {
      * parameters.
      */
     private void handleActionUpdateRecipeWidgets() {
+
+        Ingredient[] ingredients;
+        List<Ingredient> ingredientList;
+
         Log.i(TAG, "Sheila Update Ingredients List");
         // Extract the plant details
         int imgRes = R.drawable.baking_icon; // Default image in case our garden is empty
 
-        PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+        String jsonString = PreferenceManager.getDefaultSharedPreferences
+                (getApplicationContext())
                 .getString(JSON_INGREDIENTS_STRING,
-                        "defaultStringIfNothingFound");
+                        "emptyJsonString");
+        Log.i(TAG, "Sheila *** jsonString " + jsonString);
 
         // Convert the JSON string to an Ingredient Object
-//        Gson gson = new Gson();
-//        Ingredient ingredient = gson.fromJson(JSON_INGREDIENTS_STRING, Ingredient.class);
+        Gson gson = new Gson();
 
 //        Type listType = new TypeToken<ArrayList<Ingredient>>(){}.getType();
 //        List<Ingredient> ingredientList = new Gson().fromJson(JSON_INGREDIENTS_STRING, listType);
+
+        try {
+            ingredients = gson.fromJson(jsonString, Ingredient[].class);
+            ingredientList = new ArrayList<>(Arrays.asList(ingredients));
+        } catch (IllegalStateException | JsonSyntaxException exception) {
+            Log.i(TAG, "JSON error: " + exception);
+        }
+
+
+
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,

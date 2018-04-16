@@ -2,11 +2,13 @@ package com.ssowens.android.baking.services;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.google.gson.Gson;
+import com.ssowens.android.baking.R;
 import com.ssowens.android.baking.models.Ingredient;
 
 import java.util.ArrayList;
@@ -46,7 +48,7 @@ public class GridWidgetService extends RemoteViewsService {
             List<Ingredient> ingredients = new ArrayList<>();
             String jsonString = PreferenceManager.getDefaultSharedPreferences(context).getString
                     (JSON_INGREDIENTS_STRING,
-                    "defaultStringIfNothingFound");
+                            "defaultStringIfNothingFound");
             Ingredient ingredient = gson.fromJson(jsonString, Ingredient.class);
 
         }
@@ -63,7 +65,18 @@ public class GridWidgetService extends RemoteViewsService {
 
         @Override
         public RemoteViews getViewAt(int position) {
-            return null;
+
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout
+                    .recipe_widget_provider);
+
+            //Update the ingredient list image
+            //int imgRes =
+
+            Bundle extras = new Bundle();
+
+            // TODO SHARED PREFERENCE
+
+            return views;
         }
 
         @Override

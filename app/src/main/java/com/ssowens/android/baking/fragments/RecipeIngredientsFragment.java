@@ -115,20 +115,15 @@ public class RecipeIngredientsFragment extends Fragment {
     }
 
     private void updateUI() {
-
         List<Ingredient> ingredients = RecipeCollection.get(getActivity()).getRecipe(recipeId)
                 .getIngredients();
         List<Object> objects = new ArrayList<>();
         objects.add(getContext().getString(R.string.recipe_ingredients_title));
         objects.addAll(ingredients);
 
-        // TODO SHEILA
         // Get the ingredients for the widget and save them into SharedPreferences
         gson = new Gson();
         String ingredientsJsonStr = gson.toJson(ingredients);
-        Log.i(TAG, "json string = " + ingredientsJsonStr);
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString
-                (JSON_INGREDIENTS_STRING, ingredientsJsonStr).apply();
 
         // TODD need the Recipe ID in the SharedPreferences too
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString
