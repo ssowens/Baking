@@ -32,6 +32,7 @@ public class RecipeIngredientsService extends IntentService {
     public static final String ACTION_GET_INGREDIENTS = "get_ingredient_list";
     public static final long RECIPE_ID = -1;
     public static final String JSON_INGREDIENTS_STRING_EMPTY = "ingredientsJsonStrEmpty";
+    boolean isRecipeAvail;
 
     private Gson gson;
     private List<Ingredient> ingredients = new ArrayList<>();
@@ -72,8 +73,8 @@ public class RecipeIngredientsService extends IntentService {
         List<Ingredient> ingredientList;
 
         Log.i(TAG, "Sheila Update Ingredients List");
-        // Extract the plant details
-        int imgRes = R.drawable.baking_icon; // Default image in case our garden is empty
+        // Get the ingredients
+        int imgRes = R.drawable.baking_icon; // Default image in case there are no ingredients
 
         String jsonString = PreferenceManager.getDefaultSharedPreferences
                 (getApplicationContext())
@@ -83,27 +84,23 @@ public class RecipeIngredientsService extends IntentService {
 
         // Convert the JSON string to an Ingredient Object
         Gson gson = new Gson();
-
-//        Type listType = new TypeToken<ArrayList<Ingredient>>(){}.getType();
-//        List<Ingredient> ingredientList = new Gson().fromJson(JSON_INGREDIENTS_STRING, listType);
-
         try {
             ingredients = gson.fromJson(jsonString, Ingredient[].class);
             ingredientList = new ArrayList<>(Arrays.asList(ingredients));
+            if (ingredientList.size() > 0) {
+                isRecipeAvail = true;
+            }
         } catch (IllegalStateException | JsonSyntaxException exception) {
             Log.i(TAG, "JSON error: " + exception);
         }
 
-
-
-
+        Log.i(TAG, "Sheila isRecipeAvaila " + isRecipeAvail);
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
                 RecipeWidgetProvider.class));
 
-        boolean isRecipeAvail = false;  //TODO Fix this!!
         //Trigger data update to handle the GridView widgets and force a data refresh
-        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_grid_view);
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list_view);
         //Now update all widgets
         RecipeWidgetProvider.updateRecipeWidgets(this, appWidgetManager, imgRes,
                 isRecipeAvail, appWidgetIds);
