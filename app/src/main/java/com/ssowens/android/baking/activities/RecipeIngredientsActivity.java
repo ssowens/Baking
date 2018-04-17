@@ -34,15 +34,22 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity
 
     @Override
     protected Fragment createFragment() {
+        int recipeId;
+        String name;
         if (isOnline()) {
-            int recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
-            String name = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
-            return RecipeIngredientsFragment.newInstance(recipeId, name);
+            if (getIntent().getSerializableExtra(EXTRA_RECIPE_ID) != null ||
+                    getIntent().getSerializableExtra(EXTRA_RECIPE_NAME) != null) {
+
+                recipeId = (int) getIntent().getSerializableExtra(EXTRA_RECIPE_ID);
+                name = (String) getIntent().getSerializableExtra(EXTRA_RECIPE_NAME);
+                return RecipeIngredientsFragment.newInstance(recipeId, name);
+            }
         } else {
             Toast.makeText(this, getString(R.string.no_internet_service),
                     Toast.LENGTH_SHORT).show();
-            return null;
+
         }
+        return null;
     }
 
     @Override

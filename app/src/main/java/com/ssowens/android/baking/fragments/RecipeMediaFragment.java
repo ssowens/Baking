@@ -15,14 +15,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.PlayerControlView;
 import com.google.android.exoplayer2.ui.PlayerView;
@@ -40,6 +48,7 @@ import com.ssowens.android.baking.models.Step;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.android.exoplayer2.Player.STATE_READY;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_ID;
 import static com.ssowens.android.baking.activities.RecipeMediaActivity.EXTRA_RECIPE_NAME;
@@ -56,6 +65,8 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     public View view;
     private PlayerView playerView;
     private ViewPager viewPager;
+    private TextView noVideoTxtView;
+    private ProgressBar progressBar;
     private MediaSource videoSource;
     private boolean shouldAutoPlay;
     private DataSource.Factory dataSourceFactory;
@@ -66,6 +77,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private ImageButton btnRightRecipe;
     private ImageButton btnLeftRecipe;
     private View buttonLayout;
+    private ArrayList<Step> steps = new ArrayList<>();
 
 
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
@@ -123,11 +135,13 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_recipe_media, container, false);
         playerView = view.findViewById(R.id.playerView);
+        noVideoTxtView = view.findViewById(R.id.no_video);
+        progressBar = view.findViewById(R.id.progress);
 
         viewPager = view.findViewById(R.id.media_view_pager);
         buttonLayout = view.findViewById(R.id.buttonLayout);
         recipes = RecipeCollection.get(getActivity()).getRecipes();
-        final ArrayList<Step> steps = new ArrayList<>();
+        steps.clear();
 
         for (Recipe recipe : recipes) {
             if (recipe.getId() == recipeId) {
@@ -135,15 +149,17 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
                 break;
             }
         }
+
+        if (!steps.isEmpty()) {
+            updateVideoUrl(stepId);
+        }
+
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
                 Step step = steps.get(position);
-                if (!TextUtils.isEmpty(step.getVideoURL())) {
-                    videoUrl = step.getVideoURL();
-                }
                 playerView.hideController();
                 return StepsFragment.newInstance(step.getDescription());
             }
@@ -155,6 +171,10 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         });
         if (stepId < steps.size()) {
             viewPager.setCurrentItem(stepId);
+            Step step = steps.get(stepId);
+            if (!TextUtils.isEmpty(step.getVideoURL())) {
+                videoUrl = step.getVideoURL();
+            }
         }
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -165,8 +185,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             @Override
             public void onPageSelected(int position) {
                 // Stop the player and start the next video
-                exoPlayer.stop(true);
-                initializePlayer();
+                releasePlayer();
+                updateVideoUrl(position);
+                playVideo();
             }
 
             @Override
@@ -175,7 +196,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             }
         });
 
-        initializePlayer();
+        // initializePlayer();
 
         btnRightRecipe = view.findViewById(R.id.right_nav);
         btnRightRecipe.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +222,30 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
     }
 
+    private void updateVideoUrl(int index) {
+        videoUrl = "";
+        if (index < steps.size()) {
+            Step step = steps.get(index);
+            if (!TextUtils.isEmpty(step.getVideoURL())) {
+                videoUrl = step.getVideoURL();
+            }
+        }
+
+    }
+
+    private void playVideo() {
+        if (videoUrl.isEmpty()) {
+            noVideoTxtView.setVisibility(View.VISIBLE);
+            playerView.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
+        } else {
+            noVideoTxtView.setVisibility(View.GONE);
+            playerView.setVisibility(View.VISIBLE);
+            initializePlayer();
+        }
+    }
+
+
     private void initializePlayer() {
 
         // Measures bandwidth during playback. Can be null if not required.
@@ -221,6 +266,61 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         // Prepare the player with the source.
         exoPlayer.prepare(videoSource);
         exoPlayer.setPlayWhenReady(shouldAutoPlay);
+        exoPlayer.addListener(new Player.EventListener() {
+            @Override
+            public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
+
+            }
+
+            @Override
+            public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+
+            }
+
+            @Override
+            public void onLoadingChanged(boolean isLoading) {
+            }
+
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                if (playbackState >= STATE_READY) {
+                    progressBar.setVisibility(View.GONE);
+                } else {
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onRepeatModeChanged(int repeatMode) {
+
+            }
+
+            @Override
+            public void onShuffleModeEnabledChanged(boolean shuffleModeEnabled) {
+
+            }
+
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+
+            }
+
+            @Override
+            public void onPositionDiscontinuity(int reason) {
+
+            }
+
+            @Override
+            public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
+
+            }
+
+            @Override
+            public void onSeekProcessed() {
+
+            }
+        });
+
         playerView.setPlayer(exoPlayer);
     }
 
@@ -228,9 +328,11 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
      * Release ExoPlayer.
      */
     private void releasePlayer() {
-        exoPlayer.stop();
-        exoPlayer.release();
-        exoPlayer = null;
+        if (exoPlayer != null) {
+            exoPlayer.stop();
+            exoPlayer.release();
+            exoPlayer = null;
+        }
     }
 
     @Override
@@ -244,8 +346,8 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     }
 
     /**
-     *  As our app can be visible but not active in split window mode, we need to initialize the
-     *  player in onStart.
+     * As our app can be visible but not active in split window mode, we need to initialize the
+     * player in onStart.
      */
     @Override
     public void onStart() {
@@ -290,7 +392,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         super.onResume();
         //exoPlayer.prepare(videoSource);
         if ((Util.SDK_INT <= 23 || exoPlayer == null)) {
-            initializePlayer();
+            playVideo();
         }
     }
 
