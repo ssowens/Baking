@@ -97,7 +97,7 @@ public class ListWidgetService extends RemoteViewsService {
 
             Intent fillIntent = new Intent();
             fillIntent.putExtra("ItemRow", itemRow);
-            views.setOnClickFillInIntent(R.id.widget_list_view, fillIntent);
+            views.setOnClickFillInIntent(R.id.text_row, fillIntent);
 
             return views;
         }
