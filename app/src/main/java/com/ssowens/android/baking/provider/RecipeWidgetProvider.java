@@ -47,10 +47,12 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
             Log.i(TAG, "Sheila This is the recipe id" + recipeId);
         }
 
-        if (width < 60 || recipeId == -1) {
+        if (width < 300 || recipeId == -1) {
             Log.i(TAG, "** Sheila No Ingredient List Avail **");
+            // Get View for Smaller Image
             rv = getHomeRemoteView(context, imgRes, isRecipeAvail);
         } else {
+            // Get View for Larger Image
             rv = getIngredientListRemoteView(context);
         }
         appWidgetManager.updateAppWidget(appWidgetId, rv);
@@ -94,7 +96,9 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         // Set the Ingredients intent to launch when clicked
         // TODO I should the recipe ID this
         Intent appIntent = new Intent(context, RecipeIngredientsActivity.class);
-        appIntent.getIntExtra(SHARED_PREF_RECIPE_ID, recipeId);
+        //appIntent.getIntExtra(SHARED_PREF_RECIPE_ID, recipeId);
+        appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_ID, recipeId);
+        appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "TEST");
         PendingIntent appPendingIntent = PendingIntent.getActivity(context, 0,
                 appIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.widget_list_view, appPendingIntent);
@@ -116,6 +120,7 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
             Log.i(TAG, "Sheila Recipe Id = " + recipeId);
             intent = new Intent(context, RecipeIngredientsActivity.class);
             intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_ID, recipeId);
+            intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "TEST");
             // TODO Need Recipe Name
         }
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
@@ -138,6 +143,16 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, imgRes, isRecipeAvail, appWidgetId);
         }
+    }
+
+
+    // Gets called when you change the dimension of the widget
+    // Added later - Sheila
+    @Override
+    public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager,
+                                          int appWidgetId, Bundle newOptions) {
+        RecipeIngredientsService.startActionUpdateRecipeWidgets(context);
+        super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
     }
 }
 

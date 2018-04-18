@@ -2,7 +2,6 @@ package com.ssowens.android.baking.services;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -11,7 +10,6 @@ import android.widget.RemoteViewsService;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.ssowens.android.baking.R;
-import com.ssowens.android.baking.activities.RecipeIngredientsActivity;
 import com.ssowens.android.baking.models.Ingredient;
 
 import java.util.ArrayList;
@@ -36,6 +34,7 @@ public class ListWidgetService extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
         return new ListRemoteViewsFactory(this.getApplicationContext());
+        // TODO Get data from getDataFromSharePrefs
     }
 
     public class ListRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
@@ -100,17 +99,15 @@ public class ListWidgetService extends RemoteViewsService {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout
                     .item_widget_list_view);
 
-            // TODO REVIEW
-            views.setTextViewText(R.id.quantity, ingredientList.get(position).getQuantity());
-            views.setTextViewText(R.id.measure, ingredientList.get(position).getMeasure());
-            views.setTextViewText(R.id.ingredient, ingredientList.get(position).getIngredient());
+            String itemRow = ingredientList.get(position).getQuantity() + "  " +
+                    ingredientList.get(position).getMeasure() + "  " +
+                    ingredientList.get(position).getIngredient();
+            views.setTextViewText(R.id.text_row, itemRow);
 
-            Bundle extras = new Bundle();
 
             // TODO  fill in Recipe Id
-            extras.putInt(RecipeIngredientsActivity.EXTRA_RECIPE_ID, 0);
             Intent fillIntent = new Intent();
-            fillIntent.putExtras(extras);
+            fillIntent.putExtra("ItemRow", itemRow);
             views.setOnClickFillInIntent(R.id.widget_list_view, fillIntent);
 
             return views;

@@ -69,6 +69,7 @@ public class RecipeIngredientsService extends IntentService {
      */
     private void handleActionUpdateRecipeWidgets() {
 
+        // Get the Data for the Widget
         Ingredient[] ingredients;
         List<Ingredient> ingredientList;
 
@@ -99,11 +100,13 @@ public class RecipeIngredientsService extends IntentService {
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
                 RecipeWidgetProvider.class));
 
-        //Trigger data update to handle the GridView widgets and force a data refresh
-        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list_view);
         //Now update all widgets
         RecipeWidgetProvider.updateRecipeWidgets(this, appWidgetManager, imgRes,
                 isRecipeAvail, appWidgetIds);
+
+        //Trigger data update to handle the GridView widgets and force a data refresh
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list_view);
+
     }
 
     /**
@@ -132,16 +135,6 @@ public class RecipeIngredientsService extends IntentService {
 
     }
 
-    //TODO CONVERT JSON TO OBJECT
-    /**
-     * Gson g = new Gson(); Player p = g.fromJson(jsonString, Player.class)
 
-     */
 
-    // TODO GET SHAREDPREFERENCES
-    /*
-
-   PreferenceManager.getDefaultSharedPreferences(context).getString("MYLABEL",
-   "defaultStringIfNothingFound");
-     */
 }
