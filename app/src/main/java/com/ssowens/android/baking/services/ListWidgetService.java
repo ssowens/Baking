@@ -45,17 +45,10 @@ public class ListWidgetService extends RemoteViewsService {
 
         public ListRemoteViewsFactory(Context context) {
             this.context = context;
-
-            populateListItem();
         }
 
         @Override
         public void onCreate() {
-
-        }
-
-        private void populateListItem() {
-            // SharedPreferences get them
         }
 
 
@@ -68,7 +61,6 @@ public class ListWidgetService extends RemoteViewsService {
                     (getApplicationContext())
                     .getString(JSON_INGREDIENTS_STRING,
                             "emptyJsonString");
-            Log.i(TAG, "Sheila *** jsonString " + jsonString);
 
             // Convert the JSON string to an Ingredient Object
             try {
@@ -89,7 +81,6 @@ public class ListWidgetService extends RemoteViewsService {
 
         @Override
         public int getCount() {
-            Log.i(TAG, "Sheila Size for ingredientList.size()=" + ingredientList.size());
             return ingredientList.size();
         }
 
@@ -104,8 +95,6 @@ public class ListWidgetService extends RemoteViewsService {
                     ingredientList.get(position).getIngredient();
             views.setTextViewText(R.id.text_row, itemRow);
 
-
-            // TODO  fill in Recipe Id
             Intent fillIntent = new Intent();
             fillIntent.putExtra("ItemRow", itemRow);
             views.setOnClickFillInIntent(R.id.widget_list_view, fillIntent);

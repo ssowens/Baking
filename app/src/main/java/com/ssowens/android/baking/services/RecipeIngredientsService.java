@@ -30,8 +30,6 @@ public class RecipeIngredientsService extends IntentService {
     private static final String TAG = RecipeIngredientsService.class.getSimpleName();
     public static final String ACTION_UPDATE_RECIPE_WIDGETS = "update_recipe_widgets";
     public static final String ACTION_GET_INGREDIENTS = "get_ingredient_list";
-    public static final long RECIPE_ID = -1;
-    public static final String JSON_INGREDIENTS_STRING_EMPTY = "ingredientsJsonStrEmpty";
     boolean isRecipeAvail;
 
     private Gson gson;
@@ -59,7 +57,6 @@ public class RecipeIngredientsService extends IntentService {
      * parameters.
      */
     private void handleActionGetIngredients() {
-        Log.i(TAG, "Sheila Get Ingredients");
         startActionGetIngredientList(this);
     }
 
@@ -73,7 +70,6 @@ public class RecipeIngredientsService extends IntentService {
         Ingredient[] ingredients;
         List<Ingredient> ingredientList;
 
-        Log.i(TAG, "Sheila Update Ingredients List");
         // Get the ingredients
         int imgRes = R.drawable.baking_icon; // Default image in case there are no ingredients
 
@@ -81,7 +77,6 @@ public class RecipeIngredientsService extends IntentService {
                 (getApplicationContext())
                 .getString(JSON_INGREDIENTS_STRING,
                         "emptyJsonString");
-        Log.i(TAG, "Sheila *** jsonString " + jsonString);
 
         // Convert the JSON string to an Ingredient Object
         Gson gson = new Gson();
@@ -95,7 +90,6 @@ public class RecipeIngredientsService extends IntentService {
             Log.i(TAG, "JSON error: " + exception);
         }
 
-        Log.i(TAG, "Sheila isRecipeAvaila " + isRecipeAvail);
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
                 RecipeWidgetProvider.class));
@@ -106,7 +100,6 @@ public class RecipeIngredientsService extends IntentService {
 
         //Trigger data update to handle the GridView widgets and force a data refresh
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list_view);
-
     }
 
     /**
@@ -119,7 +112,6 @@ public class RecipeIngredientsService extends IntentService {
         Intent intent = new Intent(context, RecipeIngredientsService.class);
         intent.setAction(ACTION_GET_INGREDIENTS);
         context.startService(intent);
-
     }
 
     /**
@@ -132,9 +124,5 @@ public class RecipeIngredientsService extends IntentService {
         Intent intent = new Intent(context, RecipeIngredientsService.class);
         intent.setAction(ACTION_UPDATE_RECIPE_WIDGETS);
         context.startService(intent);
-
     }
-
-
-
 }

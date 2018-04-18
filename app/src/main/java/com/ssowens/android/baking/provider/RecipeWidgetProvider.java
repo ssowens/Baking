@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -37,18 +36,12 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
 
         Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
         int width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
-        Log.i(TAG, "Sheila width = " + width);
         RemoteViews rv;
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences
-                (context);
-        if (sharedPreferences.contains("recipe")) {
-            recipeId = sharedPreferences.getInt(SHARED_PREF_RECIPE_ID, -1);
-            Log.i(TAG, "Sheila This is the recipe id" + recipeId);
-        }
+       recipeId = PreferenceManager.getDefaultSharedPreferences(context).getInt
+                (SHARED_PREF_RECIPE_ID, 0);
 
-        if (width < 300 || recipeId == -1) {
-            Log.i(TAG, "** Sheila No Ingredient List Avail **");
+        if (width < 200) {
             // Get View for Smaller Image
             rv = getHomeRemoteView(context, imgRes, isRecipeAvail);
         } else {
@@ -60,7 +53,8 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        //Start the intent service update widget action, the service takes care of updating the widgets UI
+        // Start the intent service update widget action, the service takes care of updating the
+        // widgets UI
         RecipeIngredientsService.startActionUpdateRecipeWidgets(context);
     }
 
@@ -94,11 +88,9 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         views.setRemoteAdapter(R.id.widget_list_view, intent);
 
         // Set the Ingredients intent to launch when clicked
-        // TODO I should the recipe ID this
         Intent appIntent = new Intent(context, RecipeIngredientsActivity.class);
-        //appIntent.getIntExtra(SHARED_PREF_RECIPE_ID, recipeId);
         appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_ID, recipeId);
-        appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "TEST");
+        appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "Baking");
         PendingIntent appPendingIntent = PendingIntent.getActivity(context, 0,
                 appIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.widget_list_view, appPendingIntent);
@@ -113,14 +105,14 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         // Set the click handler to open the MainActivity if there is no recipe
         // selected. Otherwise, open the Ingredient activity.
         Intent intent;
+        Log.i(TAG, "Sheila Recipe Id* = " + recipeId);
         if (recipeId == 0) {
-            Log.i(TAG, "Sheila Recipe Id* = " + recipeId);
             intent = new Intent(context, MainActivity.class);
         } else {
             Log.i(TAG, "Sheila Recipe Id = " + recipeId);
             intent = new Intent(context, RecipeIngredientsActivity.class);
             intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_ID, recipeId);
-            intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "TEST");
+            intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "Baking");
             // TODO Need Recipe Name
         }
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
