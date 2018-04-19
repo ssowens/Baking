@@ -30,6 +30,12 @@
                 app:fastforward_increment="1000"
                 app:rewind_increment="1000"/>
 
+            <ImageView
+                android:id="@+id/thumbnail_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/no_video"
                 android:layout_width="wrap_content"

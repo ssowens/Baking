@@ -42,11 +42,9 @@
             android:parentActivityName=".activities.MainActivity"/>
         <activity
             android:name=".activities.RecipeMediaActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:launchMode="singleTop"/>
         <activity
             android:name=".activities.RecipeMediaPagerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:launchMode="singleTop"/>
     </application>
 
