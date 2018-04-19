@@ -41,7 +41,6 @@ public class RecipeIngredientsService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        Log.i(TAG, "Sheila onHandleIntent");
         if (intent != null) {
             final String action = intent.getAction();
             if (ACTION_GET_INGREDIENTS.equals(action)) {
