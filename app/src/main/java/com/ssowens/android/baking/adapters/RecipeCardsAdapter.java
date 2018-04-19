@@ -62,9 +62,9 @@ public class RecipeCardsAdapter extends RecyclerView.Adapter<RecipeCardsAdapter
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName()
-                            + " " + binding.getRecipe().getId(), Toast.LENGTH_LONG).show();
-                    //RecipeIngredientsService.startActionGetIngredientList(v.getContext());
+                    Toast.makeText(v.getContext(), "Clicked " + binding.getRecipe().getName(),
+                            Toast.LENGTH_LONG).show();
+
                     Intent intent = new Intent(v.getContext(), RecipeIngredientsActivity.class);
                     intent.putExtra(EXTRA_RECIPE_ID, binding.getRecipe().getId());
                     intent.putExtra(EXTRA_RECIPE_NAME, binding.getRecipe().getName());

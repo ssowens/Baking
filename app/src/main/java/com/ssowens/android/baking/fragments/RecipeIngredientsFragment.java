@@ -35,6 +35,7 @@ public class RecipeIngredientsFragment extends Fragment {
     public Callbacks callbacks;
     public static final String JSON_INGREDIENTS_STRING = "ingredientsJsonStr";
     public static final String SHARED_PREF_RECIPE_ID = "recipeId";
+    public static final String SHARED_PREF_RECIPE_NAME = "recipeName";
 
     RecyclerView recyclerView;
     RecipeIngredientsStepsAdapter recipeIngredientsAdapter;
@@ -125,11 +126,13 @@ public class RecipeIngredientsFragment extends Fragment {
         gson = new Gson();
         String ingredientsJsonStr = gson.toJson(ingredients);
 
-        // TODD need the Recipe ID in the SharedPreferences too
+        //Save data in SharedPreferences
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString
                 (JSON_INGREDIENTS_STRING, ingredientsJsonStr).apply();
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putInt
                 (SHARED_PREF_RECIPE_ID, recipeId).apply();
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString
+                (SHARED_PREF_RECIPE_NAME, recipeName).apply();
 
         objects.add(getContext().getString(R.string.recipe_steps));
         List<Step> steps = RecipeCollection.get(getActivity()).getRecipe(recipeId).getSteps();

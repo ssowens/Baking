@@ -37,6 +37,7 @@ public class RecipeIngredientsActivity extends SingleFragmentActivity
         int recipeId;
         String name;
         if (isOnline()) {
+            Log.i(TAG, "Calling RecipeIngredientsActivity");
             if (getIntent().getSerializableExtra(EXTRA_RECIPE_ID) != null ||
                     getIntent().getSerializableExtra(EXTRA_RECIPE_NAME) != null) {
 

@@ -6,11 +6,9 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.ssowens.android.baking.R;
@@ -20,6 +18,7 @@ import com.ssowens.android.baking.services.ListWidgetService;
 import com.ssowens.android.baking.services.RecipeIngredientsService;
 
 import static com.ssowens.android.baking.fragments.RecipeIngredientsFragment.SHARED_PREF_RECIPE_ID;
+import static com.ssowens.android.baking.fragments.RecipeIngredientsFragment.SHARED_PREF_RECIPE_NAME;
 
 /**
  * Implementation of App Widget functionality.
@@ -29,7 +28,7 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
     private static final String TAG = RecipeWidgetProvider.class.getSimpleName();
     private static int recipeId;
     int imgRes;
-    String recipeName = "";
+    private static String recipeName;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
@@ -37,20 +36,18 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
 
         Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
         int width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
-        Log.i(TAG, "Sheila width = " + width);
         RemoteViews rv;
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences
-                (context);
-        if (sharedPreferences.contains("recipe")) {
-            recipeId = sharedPreferences.getInt(SHARED_PREF_RECIPE_ID, -1);
-            Log.i(TAG, "Sheila This is the recipe id" + recipeId);
-        }
+        recipeId = PreferenceManager.getDefaultSharedPreferences(context).getInt
+                (SHARED_PREF_RECIPE_ID, 0);
+        recipeName = PreferenceManager.getDefaultSharedPreferences(context).getString
+                (SHARED_PREF_RECIPE_NAME, "Baking");
 
-        if (width < 60 || recipeId == -1) {
-            Log.i(TAG, "** Sheila No Ingredient List Avail **");
+        if (width < 200) {
+            // Get View for Smaller Image
             rv = getHomeRemoteView(context, imgRes, isRecipeAvail);
         } else {
+            // Get View for Larger Image
             rv = getIngredientListRemoteView(context);
         }
         appWidgetManager.updateAppWidget(appWidgetId, rv);
@@ -58,7 +55,8 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        //Start the intent service update widget action, the service takes care of updating the widgets UI
+        // Start the intent service update widget action, the service takes care of updating the
+        // widgets UI
         RecipeIngredientsService.startActionUpdateRecipeWidgets(context);
     }
 
@@ -92,9 +90,9 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         views.setRemoteAdapter(R.id.widget_list_view, intent);
 
         // Set the Ingredients intent to launch when clicked
-        // TODO I should the recipe ID this
         Intent appIntent = new Intent(context, RecipeIngredientsActivity.class);
-        appIntent.getIntExtra(SHARED_PREF_RECIPE_ID, recipeId);
+        appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_ID, recipeId);
+        appIntent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, recipeName);
         PendingIntent appPendingIntent = PendingIntent.getActivity(context, 0,
                 appIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.widget_list_view, appPendingIntent);
@@ -110,17 +108,16 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         // selected. Otherwise, open the Ingredient activity.
         Intent intent;
         if (recipeId == 0) {
-            Log.i(TAG, "Sheila Recipe Id* = " + recipeId);
             intent = new Intent(context, MainActivity.class);
         } else {
-            Log.i(TAG, "Sheila Recipe Id = " + recipeId);
+            // Create an Intent to  launch RecipeIngredientsActivity when clicked
             intent = new Intent(context, RecipeIngredientsActivity.class);
             intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_ID, recipeId);
+            intent.putExtra(RecipeIngredientsActivity.EXTRA_RECIPE_NAME, "Baking");
             // TODO Need Recipe Name
         }
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.home_list_widget_provider);
@@ -138,6 +135,15 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, imgRes, isRecipeAvail, appWidgetId);
         }
+    }
+
+
+    // Gets called when you change the dimension of the widget
+    @Override
+    public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager,
+                                          int appWidgetId, Bundle newOptions) {
+        RecipeIngredientsService.startActionUpdateRecipeWidgets(context);
+        super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
     }
 }
 
