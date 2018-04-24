@@ -63,7 +63,8 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         PlayerControlView.VisibilityListener, RecipeMediaActivity.OnConfigurationRotate {
 
     private static final String TAG = RecipeMediaFragment.class.getSimpleName();
-    public static final String SELECTED_POSITION = "resume_position";
+    private static final String SELECTED_POSITION = "resume_position";
+    private static final String EXO_PLAYER_WHEN_READY = "player_ready";
     private String videoUrl;
     private SimpleExoPlayer exoPlayer;
     public View view;
@@ -83,7 +84,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private View buttonLayout;
     private ArrayList<Step> steps = new ArrayList<>();
     private long resumePosition;
-    private boolean playerReady;
+    private boolean exoPlayerReady;
 
 
     static final String URL = "https://d17h27t6h515a5.cloudfront" +
@@ -111,6 +112,12 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
+        if (savedInstanceState != null) {
+            resumePosition = savedInstanceState.getLong(SELECTED_POSITION, 0);
+            exoPlayerReady = savedInstanceState.getBoolean(EXO_PLAYER_WHEN_READY);
+            Log.i(TAG, "Sheila resumePosition ==> " + resumePosition);
+        }
+
         Bundle args = getArguments();
         if (args != null) {
             videoUrl = args.getString(EXTRA_VIDEO_URL, URL);
@@ -125,12 +132,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         }
 
         recipes = RecipeCollection.get(getActivity()).getRecipes();
-
-        if (savedInstanceState != null) {
-            resumePosition = savedInstanceState.getInt(SELECTED_POSITION);
-            Log.i(TAG, "resumePosition ==> " + resumePosition);
-        }
-
         shouldAutoPlay = true;
         //clearResumePosition();
 
@@ -211,8 +212,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             }
         });
 
-        // initializePlayer();
-
         btnRightRecipe = view.findViewById(R.id.right_nav);
         btnRightRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,6 +234,14 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle currentState) {
+        super.onSaveInstanceState(currentState);
+        Log.i(TAG, "onSaveInstanceState");
+        currentState.putLong(SELECTED_POSITION, resumePosition);
+        currentState.putBoolean(EXO_PLAYER_WHEN_READY, exoPlayerReady);
     }
 
     private void updateVideoUrl(int index) {
@@ -260,7 +267,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         }
     }
 
-
     private void initializePlayer() {
 
         // Measures bandwidth during playback. Can be null if not required.
@@ -277,13 +283,14 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
 
         exoPlayer =
                 ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector);
-        Log.i(TAG, "Sheila resumePosition = " + resumePosition);
-        if (resumePosition != C.TIME_UNSET) {
-            Log.i(TAG, "Sheila resumePosition **= " + resumePosition);
-            exoPlayer.seekTo(resumePosition);
+        boolean haveResumePosition = resumeWindow != C.INDEX_UNSET;
+        if (haveResumePosition) {
+            exoPlayer.seekTo(resumeWindow, resumePosition);
         }
+
         // Prepare the player with the source.
-        exoPlayer.prepare(videoSource);
+        // exoPlayer.prepare(videoSource);
+        exoPlayer.prepare(videoSource, !haveResumePosition, false);
         exoPlayer.setPlayWhenReady(shouldAutoPlay);
         exoPlayer.addListener(new Player.EventListener() {
             @Override
@@ -349,9 +356,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     private void releasePlayer() {
         Log.i(TAG, "Resume releasePlayer");
         if (exoPlayer != null) {
-            //resumePosition = exoPlayer.getCurrentPosition();
             updateResumePosition();
-            Log.i(TAG, "Sheila currentPos = " + resumePosition);
             exoPlayer.stop();
             exoPlayer.release();
             exoPlayer = null;
@@ -386,13 +391,13 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
      */
     @Override
     public void onPause() {
-        Log.i(TAG, "Sheila onPause");
+        Log.i(TAG, "onPause");
         super.onPause();
+        updateResumePosition();
         if (Util.SDK_INT <= 23) {
             releasePlayer();
         }
     }
-
 
     /**
      * Starting with API Level 24 (which brought multi and split window mode) onStop is
@@ -402,6 +407,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     @Override
     public void onStop() {
         Log.i(TAG, "onStop");
+        updateResumePosition();
         super.onStop();
         if (Util.SDK_INT > 23) {
             releasePlayer();
@@ -414,11 +420,9 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
      */
     @Override
     public void onResume() {
-        Log.i(TAG, "Sheila onResume");
         super.onResume();
         if ((Util.SDK_INT <= 23 || exoPlayer == null)) {
             if (resumePosition != C.TIME_UNSET) {
-                Log.i(TAG, "Sheila Seek to new position");
                 exoPlayer.seekTo(resumePosition);
             }
             playVideo();
@@ -436,16 +440,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         }
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle currentState) {
-        Log.i(TAG, "onSaveInstanceState");
-        super.onSaveInstanceState(currentState);
-        Log.i(TAG, "Sheila resumePosition +==> " + resumePosition + "(onSaveInstanceState)");
-        currentState.putLong(SELECTED_POSITION, resumePosition);
-    }
-
     public void clearResumePosition() {
-        Log.i(TAG, "Sheila clearResumePosition");
         resumeWindow = C.INDEX_UNSET;
         resumePosition = C.TIME_UNSET;
 
@@ -454,18 +449,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
     public void updateResumePosition() {
         resumeWindow = exoPlayer.getCurrentWindowIndex();
         resumePosition = exoPlayer.getCurrentPosition();
-        Log.i(TAG, "Sheila saving resumePosition~" + resumePosition);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onActivityCreated");
-        super.onActivityCreated(savedInstanceState);
-        setRetainInstance(true); //TODO
-
-        if (savedInstanceState != null) {
-            resumePosition = savedInstanceState.getInt(SELECTED_POSITION);
-            Log.i(TAG, "Sheila resumePosition +==> " + resumePosition + " onActivityCreated");
-        }
+        exoPlayerReady = exoPlayer.getPlayWhenReady();
     }
 }
