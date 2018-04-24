@@ -115,7 +115,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         if (savedInstanceState != null) {
             resumePosition = savedInstanceState.getLong(SELECTED_POSITION, 0);
             exoPlayerReady = savedInstanceState.getBoolean(EXO_PLAYER_WHEN_READY);
-            Log.i(TAG, "Sheila resumePosition ==> " + resumePosition);
         }
 
         Bundle args = getArguments();
@@ -202,6 +201,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
             public void onPageSelected(int position) {
                 // Stop the player and start the next video
                 releasePlayer();
+                clearResumePosition();
                 updateVideoUrl(position);
                 playVideo();
             }
@@ -289,7 +289,6 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
         }
 
         // Prepare the player with the source.
-        // exoPlayer.prepare(videoSource);
         exoPlayer.prepare(videoSource, !haveResumePosition, false);
         exoPlayer.setPlayWhenReady(shouldAutoPlay);
         exoPlayer.addListener(new Player.EventListener() {
@@ -354,7 +353,7 @@ public class RecipeMediaFragment extends Fragment implements View.OnClickListene
      * Release ExoPlayer.
      */
     private void releasePlayer() {
-        Log.i(TAG, "Resume releasePlayer");
+        Log.i(TAG, "releasePlayer");
         if (exoPlayer != null) {
             updateResumePosition();
             exoPlayer.stop();
